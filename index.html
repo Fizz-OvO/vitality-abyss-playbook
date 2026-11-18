@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitality Abyss プレイブック</title>
+<script>try{var _t=localStorage.getItem("vitAbyssTheme");if(_t){document.documentElement.setAttribute("data-theme",_t);}}catch(e){}</script>
 <style>
   /* Digital Agency Design System (DADS) Inspired Tokens */
   :root {
@@ -649,6 +650,70 @@
     .site-header, .toc-nav, .playbook-search-bar { display: none !important; }
     .page-wrap { grid-template-columns: 1fr; padding: 0; }
   }
+
+  /* ===== Dark theme (Vitality playbook: default ON, toggle in search bar) ===== */
+  html[data-theme="dark"] {
+    --dads-bg: #16181D;
+    --dads-bg-sub: #1F2229;
+    --dads-bg-hover: #2A2E37;
+    --dads-border: #3A3F4A;
+    --dads-border-strong: #5C6370;
+    --dads-text: #F2F3F5;
+    --dads-text-sub: #C6CAD2;
+    --dads-text-muted: #9BA1AC;
+    --dads-blue: #8FA6FF;
+    --dads-blue-hover: #A9BBFF;
+    --dads-blue-bg: #232B4D;
+    --dads-red: #FF8A80;
+    --dads-red-bg: #472427;
+    --dads-green: #4CC38A;
+    --dads-green-bg: #1E3A2C;
+    --dads-amber: #E8B34B;
+    --dads-amber-bg: #453A1E;
+    --dads-purple: #C4A6F5;
+    --dads-purple-bg: #372A52;
+    --dads-teal: #45C4B0;
+    --dads-teal-bg: #173F3B;
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] .tab-btn,
+  html[data-theme="dark"] .dads-btn,
+  html[data-theme="dark"] .dads-input,
+  html[data-theme="dark"] .dads-select,
+  html[data-theme="dark"] .dads-textarea,
+  html[data-theme="dark"] .toc-cat,
+  html[data-theme="dark"] .memo-block,
+  html[data-theme="dark"] .shape-section,
+  html[data-theme="dark"] .tactival-placeholder,
+  html[data-theme="dark"] .ex-card,
+  html[data-theme="dark"] .accordion-body,
+  html[data-theme="dark"] .side-filters,
+  html[data-theme="dark"] .r-item,
+  html[data-theme="dark"] .tag-form,
+  html[data-theme="dark"] .main-pane,
+  html[data-theme="dark"] .cat-group,
+  html[data-theme="dark"] .rep-box,
+  html[data-theme="dark"] .drop-zone,
+  html[data-theme="dark"] .modal-box { background: var(--dads-bg-sub); }
+  html[data-theme="dark"] .tag-official,
+  html[data-theme="dark"] .tab-btn.active,
+  html[data-theme="dark"] .dads-btn.primary,
+  html[data-theme="dark"] .dads-btn-vod { background: #31449E; }
+  @media print {
+    html[data-theme="dark"] {
+      --dads-bg: #FFFFFF; --dads-bg-sub: #F4F5F6; --dads-bg-hover: #E8E9EC;
+      --dads-border: #D8D8DB; --dads-border-strong: #94949B;
+      --dads-text: #1A1A1C; --dads-text-sub: #4D4D50; --dads-text-muted: #6E6E73;
+      --dads-blue: #0017C1; --dads-blue-hover: #00118F; --dads-blue-bg: #E8EEFF;
+      color-scheme: light;
+    }
+    html[data-theme="dark"] .tab-btn, html[data-theme="dark"] .dads-btn,
+    html[data-theme="dark"] .dads-input, html[data-theme="dark"] .toc-cat,
+    html[data-theme="dark"] .memo-block, html[data-theme="dark"] .shape-section,
+    html[data-theme="dark"] .tactival-placeholder, html[data-theme="dark"] .ex-card,
+    html[data-theme="dark"] .accordion-body, html[data-theme="dark"] .modal-box { background: #fff; }
+    html[data-theme="dark"] .tag-official, html[data-theme="dark"] .dads-btn-vod { background: var(--dads-blue); }
+  }
 </style>
 </head>
 <body>
@@ -697,6 +762,7 @@
           <button type="button" class="dads-btn" id="tocToggleBtn" onclick="toggleToc()">目次を隠す</button>
           <input type="search" class="dads-input" style="max-width:none;" placeholder="プレイブック内を検索（例: スモーク, 索敵, フェイク, 設置, リテイク, sayonara, g2...）" oninput="filterPlaybook(this.value)">
           <button class="dads-btn" onclick="window.print()">印刷 / PDF</button>
+          <button type="button" class="dads-btn" id="themeToggleBtn" onclick="toggleTheme()">ライトテーマ</button>
         </div>
 
         <div class="summary-strip">
@@ -2716,6 +2782,17 @@
       </main>
     </div>
   </div>
+<script>
+function toggleTheme(){
+  var el=document.documentElement;
+  var next=el.getAttribute("data-theme")==="dark"?"light":"dark";
+  el.setAttribute("data-theme",next);
+  try{localStorage.setItem("vitAbyssTheme",next);}catch(e){}
+  var b=document.getElementById("themeToggleBtn");
+  if(b){b.textContent=next==="dark"?"ライトテーマ":"ダークテーマ";}
+}
+(function(){var b=document.getElementById("themeToggleBtn");if(b){b.textContent=document.documentElement.getAttribute("data-theme")==="dark"?"ライトテーマ":"ダークテーマ";}})();
+</script>
 <div id="imgModal" class="modal" onclick="if(event.target===this) closeImgModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeImgModal()" aria-label="閉じる">&times;</button>
