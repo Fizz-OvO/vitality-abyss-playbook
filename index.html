@@ -350,6 +350,10 @@ a{ color:inherit; text-decoration:none;}
 <div class="toc-group">
 <p>構成コンセプト</p>
 <a href="#ch1"><span>1. 構成コンセプト</span></a>
+<a href="#comp-strengths"><span>強み（検証済みデータ）</span></a>
+<a href="#comp-weaknesses"><span>弱み（検証済みデータ）</span></a>
+<a href="#comp-formations"><span>デフォルト配置・バリエーション</span></a>
+<a href="#comp-sets"><span>決まったセット</span></a>
 <a href="#matches"><span>対象試合・選手別キル</span></a>
 </div>
 <div class="toc-group">
@@ -368,10 +372,10 @@ a{ color:inherit; text-decoration:none;}
 <p>索引・出典</p>
 <a href="#ch4"><span>4. 全ラウンド索引</span><span class="cnt">64R</span></a>
 <a href="#sources"><span>出典一覧</span></a>
-<a href="#todo"><span>VOD確認待ちの項目</span></a>
+<a href="#todo"><span>残りの作業</span></a>
 </div>
 </nav>
-<p class="toc-note"><strong>読み方：</strong>型タグの採用数・勝率は、ラウンド単位のVOD分類が終わるまで集計できません。このページでは推測で埋めず、参考プレイブックと同じく「未登録／VOD確認待ち」の枠として残しています。</p>
+<p class="toc-note"><strong>読み方：</strong>勝敗・勝利条件・経済・プラント・ファーストブラッドは vlr.gg／rib.gg で検証済みです。型タグの採用数・勝率は、ラウンドGIFでの分類が終わるまで集計できないため、「未分類」の枠として残しています。</p>
 </aside>
 
 <!-- ============ MAIN ============ -->
@@ -414,14 +418,14 @@ a{ color:inherit; text-decoration:none;}
 </div>
 </section>
 
-<p class="notice"><strong>このページの状態：</strong>構成・試合結果・ハーフ内訳・選手別キル・ラウンド勝敗（ブロック単位）は出典で検証済みです。一方、ラウンドごとの<strong>勝利条件・経済タイプ・型タグ</strong>はテキスト出典では確認できなかったため、全て「未確認（VOD確認待ち）」と明記しています。ブロック内の個別ラウンド順序も未確認のものは、その旨を索引に書いています。</p>
+<p class="notice"><strong>このページの状態：</strong>構成・試合結果・選手別キルに加え、全64ラウンドの勝敗・勝利条件・経済・プラント・ファーストブラッドまで vlr.gg／rib.gg で検証済みになりました。第1章には検証済みデータに基づく強み・弱み・配置・セットを掲載しています。残る作業は、型タグの分類とラウンドGIF（Geminiで作成中）、序盤配置のGIF検証、TactiVal図解（後日追加）です。</p>
 
 <p class="no-hit" id="noHit">検索に一致する項目がありません。キーワードを変えてみてください。</p>
 
 <!-- ============ CH 1 ============ -->
 <section class="chapter" id="ch1">
 <h2>1. 構成コンセプト（ジェット＋ヨル構成）</h2>
-<p class="lead">2デュエリスト＋2コントローラー＋イニシエーター1名。センチネル不在の固定構成を、相手もピックも異なる3試合で使い続けた。</p>
+<p class="lead">2デュエリスト＋2コントローラー＋イニシエーター1名。センチネル不在の固定構成を、相手もピックも異なる3試合で使い続けた。この章では、vlr.gg／rib.ggで検証した全64ラウンドの集計から、この構成の強み・弱み・配置・決まったセットを整理する。配置とセットのうち選手の立ち位置レベルで未確認のものは&#12304;推論&#12305;と明記し、Gemini作成のラウンドGIFで検証する。</p>
 
 <div class="panel" data-search>
 <h3>構成（3試合すべてで同一）</h3>
@@ -452,32 +456,162 @@ a{ color:inherit; text-decoration:none;}
 <div class="mini-card" data-search>
 <h4>事実：数値の非対称</h4>
 <ul>
-<li>攻撃は <strong>17勝12敗</strong>と勝ち越し、防衛は <strong>13勝22敗</strong>と大きく負け越し</li>
+<li>攻撃は <strong>17勝12敗（58.6%）</strong>と勝ち越し、防衛は <strong>13勝22敗（37.1%）</strong>と大きく負け越し</li>
+<li>ファーストブラッド（FB）は全体で25―37と負け越し。特に攻撃のFBは10―19と苦戦した</li>
 <li>マップ成績は2勝1敗なのに、ラウンドでは30勝34敗（Nongshim戦 4-13 の大敗が効いている）</li>
-<li>G2戦ではJamppi（Yoru）が22キルでマップ最多級、GE戦でも18キル。NS戦ではチーム最多でもChronicleの12キルに留まった</li>
 </ul>
 </div>
 <div class="mini-card" data-search>
 <h4>検証の進み具合</h4>
 <ul>
-<li>構成・結果・ハーフ内訳・キル：<strong>検証済み</strong></li>
-<li>ラウンド勝敗：ハーフ／連取ブロック単位まで検証済み（ブロック内順序は一部未確認）</li>
-<li>型タグ・勝利条件・経済・配置図：<strong>VOD確認待ち</strong>（第2〜4章の枠参照）</li>
+<li>構成・結果・キル・ラウンド勝敗・勝利条件・経済：<strong>検証済み</strong>（vlr.gg）</li>
+<li>プラント位置・プランター・ファーストブラッド：<strong>検証済み</strong>（rib.gg 2Dリプレイ）</li>
+<li>序盤配置・ユーティリティの順序・型タグ：<strong>GIF確認待ち</strong>（GIFはGeminiで作成中）</li>
 </ul>
 </div>
 </div>
 
-<div class="panel infer-panel" data-search style="margin-top:12px">
-<h3><span class="tag-infer">推論</span>構成コンセプトの分析（事実ではありません）</h3>
+<div class="panel" id="comp-strengths" data-search style="margin-top:12px">
+<h3>強み（検証済みデータから）</h3>
 <ul class="fact-list">
-<li>センチネル不在のため、防衛ではエリア保持を「置きエージェント」ではなく、Astra／Harborのユーティリティと人数の寄せで代替する設計とみられる。防衛の負け越し（13-22）はこの弱点と整合的だが、因果はVODなしには断定できない。</li>
-<li>ダブルコントローラーは、Abyssのような縦に長いマップでスモーク／ウォールのレイヤーを重ね、YoruのテレポートとJettのダッシュで「見せてから別サイトへ」の圧を作る狙いが考えられる。</li>
-<li>イニシエーターがSova単独のため、情報取りはドローン／リコンボルトへの依存度が高く、Yoruのフェイクと合わせて相手のローテーションを遅らせる設計の可能性がある。</li>
-<li>攻撃の好成績（17-12）と防衛の不振という非対称は、次回VOD分類で最初に検証すべき仮説である。</li>
+<li><strong>攻撃の取り切り力。</strong>攻撃は17勝12敗（58.6%）。勝った17ラウンドのうち14ラウンドが全滅勝ちで、設置に頼らずキルで締め切る攻撃になっている。フルバイ同士でも攻撃は14勝6敗（70%）と強い。</li>
+<li><strong>ファーストブラッドを取った攻撃はほぼ落とさない。</strong>攻撃でFBを取ったラウンドは9勝1敗（90%）。FB取得はDerke 10回、Jamppi 7回、Chronicle 7回と、撃ち合いを担う3人に集中している。</li>
+<li><strong>設置まで持っていく力。</strong>攻撃29ラウンド中23ラウンド（79%）で設置に成功。サイトはB 14回／A 9回とB寄り（特にGE戦はB6／A3）。</li>
+<li><strong>設置担当の固定。</strong>設置23回のうちSayonara（Sova）が15回（65%）。プランターが固定されることで、設置役が不用意に落ちず、ポストプラントの人数を残す設計になっている。Sayonara自身のFB取得は1回だけで、接敵を避けて生き残る役割分担が数字にも出ている。</li>
+<li><strong>ダブルコントローラーの制圧力（構成面）。</strong>Astraの星とHarborのウォール／コーヴを重ねることで、エントリーの遮断と設置カバー（コーヴで設置役を守る）を両立できる。縦に長いAbyssで視線を何重にも切れるのはこの構成の土台。</li>
+<li><strong>ヨルのテレポートによる圧の付け替え（構成面）。</strong>片サイトで見せてからTPで本命に合流する動きが常備されており、相手のローテーション判断を遅らせる。Jettのダッシュと合わせ、両端から同時に圧をかけられる。</li>
 </ul>
-<p class="disclaimer">※ この枠内はすべて&#12304;推論&#12305;です。出典で確認できた事実は上のカードと第4章の索引だけです。</p>
+</div>
+
+<div class="panel" id="comp-weaknesses" data-search style="margin-top:12px">
+<h3>弱み（検証済みデータから）</h3>
+<ul class="fact-list">
+<li><strong>防衛が大きく負け越す。</strong>防衛は13勝22敗（37.1%）。センチネル不在でサイトを止めきれず、相手の設置を許したラウンドが防衛35ラウンド中30ラウンド（86%）に達した。防衛は「設置させてから取り返す」前提の設計で、そのリテイクが決まらない試合（NS戦 防衛4-8、G2戦 防衛4-8）では崩れる。</li>
+<li><strong>防衛は初動の撃ち合いに負けると立て直せない。</strong>防衛でFBを取ったラウンドは10勝5敗だが、FBを落としたラウンドは3勝15敗。置きエージェントがいない分、序盤の人数差がそのままサイト陥落に直結する。</li>
+<li><strong>ポストプラントを守り切れない。</strong>設置した23ラウンドは15勝8敗だが、負けた8ラウンドは<strong>すべて解除負け</strong>。逆に爆発まで守り切った勝ちは3回だけで、設置後に時間を使い切る遅延・配置が課題（設置後の立ち位置はGIFで検証予定）。</li>
+<li><strong>攻撃の入りは負け越し。</strong>攻撃のFBは10―19。それでも攻撃で勝ち越せたのは中盤のトレードが機能したためだが、NS戦ではFB 4―12と圧倒され、攻撃0勝5敗に直結した。相手の序盤アグレッションへの耐性が低い。</li>
+<li><strong>ピストルは五分。</strong>ピストルラウンドは3勝3敗。GE戦は攻撃ピストルと続くラウンドを落として0-2スタートになるなど、ハーフの入りの安定感に欠ける。</li>
+</ul>
+</div>
+
+<div class="panel" id="comp-formations" data-search style="margin-top:12px">
+<h3>デフォルト配置と配置バリエーション<span class="tag-infer">推論</span></h3>
+<p style="font-size:13px;color:var(--muted)">※ 配置は構成の標準形としての分析です。実際の各ラウンドの初期配置は、Gemini作成のラウンドGIF（バイフェーズから収録）で検証し、確定したらこの表を更新します。図解（TactiVal）は後日追加します。</p>
+<h4 style="margin-top:14px">攻撃デフォルト</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>配置</th><th>人数配分</th><th>形と狙い</th></tr></thead>
+<tbody>
+<tr><td><strong>基本デフォルト（1-3-1）</strong></td><td>A端 1 ／ 中央 3 ／ B端 1</td><td>両端にデュエリスト（Yoru／Jett）を1人ずつ置いて圧と情報を取り、中央3人（Sovaのリコン＋Astra／Harbor）がミッドと両リンクを制圧する形。Abyssはミッド経由で両サイトへ速く寄れるため、中央を厚くして「どちらにも行ける」状態を作るのが基本線。設置の65%を担うSayonaraが中央の核として動く想定とも整合する。</td></tr>
+<tr><td>2-1-2</td><td>A 2 ／ 中央 1 ／ B 2</td><td>両サイト寄せを厚くし、ミッドはSova単独で情報だけ取る形。片側へのヒット転換が速く、相手の薄いサイトを読むラウンド向き。</td></tr>
+<tr><td>1-2-2</td><td>A端 1 ／ 中央 2 ／ B 2（または鏡像）</td><td>片端にYoruを単独で残してラーク／フェイクの圧をかけ、本隊は中央＋片サイトに4人。YoruはTPでいつでも本隊に合流できる。</td></tr>
+<tr><td>3-1-1（サイトグループ型）</td><td>本命側 3 ／ 中央 1 ／ 逆端 1</td><td>本命サイト側に3人を寄せたヒット準備形。逆端の1人（Yoru想定）は音とクローンで存在を見せ、実行と同時にTP合流か裏取りを選ぶ。</td></tr>
+<tr><td>5人集結（ラッシュ型）</td><td>片サイト 5</td><td>デフォルトを挟まず一気に当たる形。エコ／アンチエコや、相手の配置を読んだラウンドで使う想定。採用の有無はGIF分類で確認する。</td></tr>
+</tbody>
+</table>
+</div>
+<h4 style="margin-top:14px">防衛デフォルト</h4>
+<div class="table-wrap">
+<table>
+<thead><tr><th>配置</th><th>人数配分</th><th>形と狙い</th></tr></thead>
+<tbody>
+<tr><td><strong>基本デフォルト（2-1-2）</strong></td><td>A 2 ／ ミッド 1 ／ B 2</td><td>両サイトに2人ずつ、ミッドに1人。センチネルがいないため、サイト担当はAstraの星とHarborのウォールで時間を稼ぎ、寄せとリテイクで取り返すのが前提。実際、防衛の勝ち13回のうち9回が解除勝ちで、相手の設置を許したのは35ラウンド中30ラウンドだった。</td></tr>
+<tr><td>1-2-2（ミッド厚め）</td><td>A 1 ／ ミッド 2 ／ B 2（または鏡像）</td><td>Abyssはミッド経由の分断が強いため、中央に2人を置いて両リンクへの侵入を早く知る形。サイト端の1人は情報特化で、無理に守らず下がる。</td></tr>
+<tr><td>3-1-1（読み置き）</td><td>読みサイト 3 ／ ミッド 1 ／ 逆サイト 1</td><td>相手の寄りをコールで読んで片サイトを厚くする形。当たればサイト前で止められるが、外すと逆サイトはリテイク確定になる。</td></tr>
+<tr><td>前線情報型</td><td>各所で早めに接敵</td><td>Derke／Jamppi／Chronicleが早い時間に撃ち合いを取りにいく形。防衛のFB取得は15回あり、取ったラウンドは10勝5敗と機能している。ただし落とすと3勝15敗まで崩れる、ハイリスクな選択肢。</td></tr>
+</tbody>
+</table>
+</div>
+<div class="slot" style="margin-top:12px"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（デフォルト配置図は後日追加）</div></div>
+</div>
+
+<div id="comp-sets" data-search style="margin-top:12px">
+<h3 style="margin:0 0 10px">決まったセット（定型プレイ）</h3>
+
+<article class="type-card" id="set-plant" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">セット</span>
+<h3>Sayonara設置固定＋コーヴカバー</h3>
+<span class="adopt">根拠：<strong>設置23回中15回がSayonara</strong>（rib検証済み）</span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>設置役をSayonara（Sova）に固定し、Harborのコーヴで設置モーションを守るのが基本線。設置役が固定されることで、デュエリスト2人は設置中もサイト周辺の制圧に専念できる。Astraの星はエントリーで使い切らず、ポストプラントの遅延用に残す想定。ユーティリティの順序はGIFで確認予定。</p></div>
+</div>
+</article>
+
+<article class="type-card" id="set-b-exec" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">セット</span>
+<h3>B寄りエグゼキュート</h3>
+<span class="adopt">根拠：<strong>設置サイト B 14回／A 9回</strong>（rib検証済み）</span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>設置先は全体でB寄り。特にGE戦はB6／A3と偏った。G2戦はB6／A5と均等に近く、相手の防衛配置に応じて振り分けている可能性がある。サイト別の勝敗内訳はGIF分類と合わせて第2章で集計する。</p></div>
+</div>
+</article>
+
+<article class="type-card" id="set-double-entry" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">セット</span>
+<h3>ダブルデュエリスト同時エントリー</h3>
+<span class="adopt">根拠：<strong>攻撃の勝ち17回中14回が全滅勝ち</strong>（vlr検証済み）</span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>JettのダッシュとYoruのゲートクラッシュでサイト内に同時に侵入し、守備側のクロスを崩す形が攻撃の締めの基本。攻撃の勝ちが全滅に偏っているのは、このエントリーでサイト内を制圧し切る設計の表れとみられる。どちらが先行するか等の分担はGIFで確認予定。</p></div>
+</div>
+</article>
+
+<article class="type-card" id="set-yoru-fake" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">セット</span>
+<h3>ヨルTPフェイク → 逆サイト合流</h3>
+<span class="adopt">根拠：<strong>構成上の定型（採用回数はGIF分類後に集計）</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>Yoruが片サイトでクローンと足音で存在を見せ、相手のローテーションを引き出してからTPで本命サイトに合流し、数的優位を作る定型。1-2-2や3-1-1の形とセットで使う想定。実際に何ラウンド使われたかはGIF分類で数える。</p></div>
+</div>
+</article>
+
+<article class="type-card" id="set-retake" data-search>
+<div class="type-head">
+<span class="side-pill side-def">防衛</span><span class="cat-pill">セット</span>
+<h3>防衛リテイク・プロトコル</h3>
+<span class="adopt">根拠：<strong>防衛の勝ち13回中9回が解除勝ち</strong>（vlr検証済み）</span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>設置を許す前提で、人数とユーティリティを残して取り返すのが防衛の勝ち筋。Harborのウォールでサイトを区切って解除側の視線を減らし、Astraの星（グラビティウェル／ノヴァパルス）とSovaのリコンで解除を通す形が想定される。センチネル不在の弱さを「守り切らない」ことで相殺する設計。ユーティリティの順序はGIFで確認予定。</p></div>
+</div>
+</article>
+
+<article class="type-card" id="set-postplant" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">セット</span>
+<h3>ポストプラントは「戦って守る」</h3>
+<span class="adopt">根拠：<strong>設置後の勝ち15回中12回が全滅勝ち／爆発3回</strong>（vlr・rib検証済み）</span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（図解は後日追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p>設置後は時間で逃げ切るより、リテイクに来た相手を倒して守る傾向が強い。裏返すと、負けた8ラウンドはすべて解除負けで、戦わずに時間を稼ぐ配置・遅延が弱点になっている。設置後の立ち位置はGIFでラウンドごとに確認し、第2章「ポストプラント」に集計する。</p></div>
+</div>
+</article>
+</div>
+
+<div class="panel infer-panel" data-search style="margin-top:12px">
+<h3><span class="tag-infer">推論</span>構成コンセプトのまとめ（分析）</h3>
+<ul class="fact-list">
+<li>この構成は「攻撃で取り切る」ことに全振りした設計で、防衛は設置を許してでもリテイクで取り返す割り切りが数字に表れている（攻撃58.6%／防衛37.1%、防衛の勝ちの69%が解除）。</li>
+<li>勝敗の分岐はファーストブラッドに強く連動する。攻撃はFBを取れば9勝1敗、防衛はFBを落とすと3勝15敗。「序盤の撃ち合いで人数差を作れるか」がこの構成の生命線。</li>
+<li>残る検証課題は、配置（この章の表が実戦と一致するか）と、ポストプラント解除負け8ラウンドの立ち位置。どちらもGemini作成のGIFでラウンド単位に確認する。</li>
+</ul>
+<p class="disclaimer">※ 配置とセットのうち「根拠」が集計データでないものは&#12304;推論&#12305;です。数値はいずれも第4章の全ラウンド索引（vlr.gg／rib.gg検証済み）から集計しています。</p>
 </div>
 </section>
+
 
 <!-- ============ MATCHES ============ -->
 <section class="chapter" id="matches">
@@ -554,11 +688,13 @@ a{ color:inherit; text-decoration:none;}
 <!-- ============ CH 2 ATTACK ============ -->
 <section class="chapter" id="ch2">
 <h2>2. 攻撃側の戦術・タグ（Attack）</h2>
-<p class="lead">分類枠（攻防 × カテゴリ × 型タグ、マルチタグ方式）は用意しましたが、型の採用数・勝率はラウンド分類が終わるまで集計できません。ここでは枠と、出典のあるハーフ単位の事実だけを載せています。</p>
+<p class="lead">分類枠（攻防 × カテゴリ × 型タグ、マルチタグ方式）は用意しましたが、型の採用数・勝率はGIFでのラウンド分類が終わるまで集計できません。ここでは枠と、検証済みの集計事実を載せています。構成レベルの分析（強み・弱み・配置・セット）は第1章にあります。</p>
 
 <div class="panel" data-search>
-<h3>出典のある攻撃面の事実（ハーフ単位）</h3>
+<h3>検証済みの攻撃面の事実（vlr／rib集計＋ハーフ単位の出典）</h3>
 <ul class="half-facts">
+<li><span class="m">集計（3試合・攻撃29R）：</span>17勝12敗。勝ちの内訳は全滅14・爆発3。設置は23回（B 14／A 9）で、プランターはSayonaraが15回。（vlr／rib）</li>
+<li><span class="m">集計：</span>設置したラウンドは15勝8敗で、負けは全て解除負け。FBを取ったラウンドは9勝1敗、FBを落としたラウンドは8勝11敗。（vlr／rib）</li>
 <li><span class="m">vs G2（攻撃 9-3）：</span>開始4ラウンド連取、その後さらに4連取の区間があった。（egamersworld / ibet）</li>
 <li><span class="m">vs Global Esports（攻撃 8-4）：</span>ピストルを含む序盤0-2から、残り10ラウンドで8勝してハーフを終えた。（talkesport）</li>
 <li><span class="m">vs Nongshim（攻撃 0-5）：</span>後半は1ラウンドも取れなかった。（egamersworld）</li>
@@ -599,7 +735,7 @@ a{ color:inherit; text-decoration:none;}
 </div>
 <div class="type-cols">
 <div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、デフォルト配置図を追加）</div></div>
-<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。各ラウンドの初期人数配置は未確認です）</p></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（型としての集計はGIF分類待ち。配置の分析は第1章「デフォルト配置と配置バリエーション」に記載しています）</p></div>
 </div>
 <div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
 </article>
@@ -625,7 +761,7 @@ a{ color:inherit; text-decoration:none;}
 </div>
 <div class="type-cols">
 <div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、設置後の立ち位置図を追加）</div></div>
-<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。設置後の各選手ポジションと遅延手段は未確認です）</p></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（型としての集計はGIF分類待ち。集計で見えた傾向は第1章のセット「ポストプラントは『戦って守る』」に記載しています。設置後の各選手ポジションはGIFで確認します）</p></div>
 </div>
 <div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
 </article>
@@ -634,12 +770,14 @@ a{ color:inherit; text-decoration:none;}
 <!-- ============ CH 3 DEFENSE ============ -->
 <section class="chapter" id="ch3">
 <h2>3. 防衛側の戦術（Defense）</h2>
-<p class="lead">防衛はカテゴリ「全体」として枠を用意し、型タグの採用数・勝率は分類待ちです。センチネル不在をどう補うか（Harborウォール／Astraスターの固定配置、寄せの速さ）が分類の焦点になります。</p>
+<p class="lead">防衛はカテゴリ「全体」として枠を用意し、型タグの採用数・勝率は分類待ちです。集計では「相手の設置を許すのが35ラウンド中30ラウンド、勝ち13回のうち9回が解除勝ち」という姿が既に見えており、センチネル不在の補い方（リテイクのユーティリティ順序、寄せの速さ）が分類の焦点になります。</p>
 
 <div class="panel" data-search>
-<h3>出典のある防衛面の事実（ハーフ単位）</h3>
+<h3>検証済みの防衛面の事実（vlr／rib集計＋ハーフ単位の出典）</h3>
 <ul class="half-facts">
-<li><span class="m">vs G2（防衛 4-8）：</span>後半開始直後に4連敗し、11-11まで追いつかれたが、最後の2ラウンド（R23・R24）を取り切った。R23はポストプラント状況でDerkeが複数キルを取るクラッチ性のラウンドだったことが映像クリップの説明で確認できる（勝利条件の詳細は未確認）。</li>
+<li><span class="m">集計（3試合・防衛35R）：</span>13勝22敗。勝ちの内訳は解除9・全滅3・時間切れ1。相手の設置を許したのは30ラウンド（86%）。（vlr／rib）</li>
+<li><span class="m">集計：</span>FBを取ったラウンドは10勝5敗、FBを落としたラウンドは3勝15敗。（rib）</li>
+<li><span class="m">vs G2（防衛 4-8）：</span>後半開始直後に4連敗し、11-11まで追いつかれたが、最後の2ラウンド（R23・R24）をどちらも解除勝ちで取り切った（vlrで確定）。R23はDerkeが複数キルを取るクラッチ性のラウンドだったことが映像クリップの説明でも確認できる。</li>
 <li><span class="m">vs Global Esports（防衛 5-6）：</span>後半ピストルを取り10-4とした後、5連敗で9-10まで迫られたが、最後の4ラウンドで3勝して閉めた。（talkesport）</li>
 <li><span class="m">vs Nongshim（防衛 4-8）：</span>前半の防衛のみ。後半の攻撃で全敗したため、防衛ラウンドはこの12ラウンドだけ。</li>
 </ul>
@@ -653,7 +791,7 @@ a{ color:inherit; text-decoration:none;}
 </div>
 <div class="type-cols">
 <div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、防衛セットアップ図を追加）</div></div>
-<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。センチネル不在の補い方は&#12304;推論&#12305;として第1章にのみ記載しています）</p></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（型としての集計はGIF分類待ち。防衛の勝ち筋の分析は第1章のセット「防衛リテイク・プロトコル」に記載しています）</p></div>
 </div>
 <div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
 </article>
@@ -662,80 +800,109 @@ a{ color:inherit; text-decoration:none;}
 <!-- ============ CH 4 ROUND INDEX ============ -->
 <section class="chapter" id="ch4">
 <h2>4. 全ラウンド索引</h2>
-<p class="lead">全64ラウンド分を、出典で確定している単位（個別ラウンド／連取ブロック）で並べています。「ブロック内順序未確認」の行は、ハーフや連取区間の集計だけが確定しており、個別ラウンドの勝者は断定していません。勝利条件と経済タイプは、テキスト出典にラウンド単位の情報がなかったため、ハーフ初回のピストル（種別のみ）を除き全行「未確認」です。</p>
+<p class="lead">全64ラウンドを1ラウンドずつ並べています。勝者・勝利条件・経済はvlr.gg、プラントとファーストブラッドはrib.ggの2Dリプレイで検証済みです。プラントのサイトはマップ上の位置からの推定です。型タグはGIF分類後に追加します。</p>
 
 <div class="filters" role="group" aria-label="ラウンド索引の絞り込み">
 <button class="fbtn" type="button" data-filter="all" aria-pressed="true">すべて</button>
 <button class="fbtn" type="button" data-filter="atk" aria-pressed="false">攻撃のみ</button>
 <button class="fbtn" type="button" data-filter="def" aria-pressed="false">防衛のみ</button>
-<button class="fbtn" type="button" data-filter="vitwin" aria-pressed="false">VIT勝ち（確定分）</button>
+<button class="fbtn" type="button" data-filter="vitwin" aria-pressed="false">VIT勝ち</button>
 <span class="fcount" id="filterCount"></span>
 </div>
 
 <div class="panel" style="padding:6px 14px">
 <div class="table-wrap">
 <table class="round-table" id="roundTable">
-<thead><tr><th style="width:64px">R</th><th style="width:64px">VITサイド</th><th style="width:210px">勝者</th><th>勝利条件</th><th>経済</th><th>根拠（出典で確定している範囲）</th></tr></thead>
+<thead><tr><th style="width:56px">R</th><th style="width:64px">VITサイド</th><th style="width:170px">勝者</th><th style="width:90px">勝利条件</th><th>経済（VIT ― 相手）</th><th>プラント（実行者・サイト）</th><th>ファーストブラッド</th></tr></thead>
 <tbody>
-<tr class="match-divider"><td colspan="6">2026-09-26 ― vs Global Esports（VITピック）<span class="md-score num">13 ― 10 勝ち</span></td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">ピストルを落とし0-2</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">0-2</td></tr>
-<tr class="block-row" data-side="atk" data-winner="block"><td class="r num">R3-12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner block">VIT 8勝・GE 2勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">ハーフ 8-4 で確定</td></tr>
-<tr data-side="def" data-winner="vit"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半ピストル取得、10-4へ</td></tr>
-<tr data-side="def" data-winner="vit"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">10-4 到達で確定</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R18</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R19</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取（9-10）</td></tr>
-<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R20-23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">VIT 3勝・GE 1勝<br /><span class="unknown-note">ブロック内順序未確認（最終R23はVIT勝ちで確定）</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">13-10 決着で確定</td></tr>
-
-<tr class="match-divider"><td colspan="6">2026-10-08 ― vs Nongshim RedForce（VITピック）<span class="md-score num">4 ― 13 負け</span></td></tr>
-<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R1-12</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">NS 8勝・VIT 4勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認（R1はピストル）</td><td class="basis">ハーフ 4-8 で確定</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半全敗</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
-<tr data-side="atk" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗（13-4 決着）</td></tr>
-
-<tr class="match-divider"><td colspan="6">2026-10-10 ― vs G2 Esports（G2ピック）<span class="md-score num">13 ― 11 勝ち</span></td></tr>
-<tr data-side="atk" data-winner="vit"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">開始4連取</td></tr>
-<tr data-side="atk" data-winner="vit"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
-<tr data-side="atk" data-winner="vit"><td class="r num">R3</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
-<tr data-side="atk" data-winner="vit"><td class="r num">R4</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
-<tr class="block-row" data-side="atk" data-winner="block"><td class="r num">R5-12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner block">VIT 5勝・G2 3勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">ハーフ 9-3 で確定</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半開始4連敗</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
-<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
-<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R17-22</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">VIT 2勝・G2 4勝<br /><span class="unknown-note">うち終盤にG2の3連取を含む。ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">11-11 到達で確定</td></tr>
-<tr data-side="def" data-winner="vit"><td class="r num">R23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認<span class="basis">（ポストプラント状況での決着という映像説明あり）</span></td><td class="unknown">未確認</td><td class="basis">最後の2連取／映像クリップ説明。Derkeの複数キル</td></tr>
-<tr data-side="def" data-winner="vit"><td class="r num">R24</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">最後の2連取</td></tr>
+<tr class="match-divider"><td colspan="7">2026-09-26 ― vs Global Esports（VITピック）<span class="md-score num">13 ― 10 勝ち</span></td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td>解除</td><td class="num">Pistol 3.7k ― Pistol 4.1k</td><td>Sayonara・B</td><td>GE UdoTan→Derke 1:25</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td>解除</td><td class="num">Eco 2.4k ― Conv. 16.5k</td><td>Sayonara・B</td><td>GE xavi8k→Chronicle 1:29</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R3</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.1k ― Bonus 20.9k</td><td>—</td><td>VIT Derke→autumn 1:26</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R4</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.3k ― Full 21.2k</td><td>PROFEK・A</td><td>GE UdoTan→Derke 1:25</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R5</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.1k ― Eco 7.4k</td><td>Sayonara・A</td><td>GE UdoTan→Chronicle 1:28</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R6</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td>解除</td><td class="num">Full 22.2k ― Full 22.1k</td><td>Jamppi・B</td><td>GE UdoTan→PROFEK 1:30</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R7</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>爆発</td><td class="num">Full 23.2k ― Full 21.0k</td><td>Sayonara・B</td><td>GE autumn→Chronicle 1:30</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R8</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 20.4k ― Eco 6.9k</td><td>Chronicle・B</td><td>VIT Derke→PatMen 0:11</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R9</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.5k ― Full 20.5k</td><td>Sayonara・B</td><td>VIT Jamppi→autumn 1:11</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R10</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 23.2k ― Eco 7.1k</td><td>—</td><td>VIT Derke→UdoTan 1:36</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R11</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td>全滅</td><td class="num">Full 25.0k ― Full 23.4k</td><td>—</td><td>GE UdoTan→Jamppi 1:23</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 23.2k ― Full 26.1k</td><td>Sayonara・A</td><td>GE Kr1stal→Derke 1:28</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Pistol 3.8k ― Pistol 4.1k</td><td>autumn(GE)・B</td><td>VIT Jamppi→UdoTan 1:13</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Conv. 15.6k ― Eco 3.3k</td><td>—</td><td>VIT Derke→Kr1stal 1:22</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>爆発</td><td class="num">Half 16.4k ― Bonus 21.5k</td><td>Kr1stal・B</td><td>GE autumn→Jamppi 1:26</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>全滅</td><td class="num">Full 22.9k ― Full 22.2k</td><td>xavi8k・A</td><td>VIT Derke→autumn 1:29</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>全滅</td><td class="num">Eco 6.8k ― Full 22.9k</td><td>UdoTan・A</td><td>GE UdoTan→Sayonara 1:30</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R18</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>爆発</td><td class="num">Full 22.3k ― Full 23.7k</td><td>xavi8k・A</td><td>GE autumn→Sayonara 1:22</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R19</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>全滅</td><td class="num">Eco 8.6k ― Full 23.1k</td><td>PatMen・B</td><td>GE UdoTan→Derke 1:35</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R20</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 22.4k ― Full 23.7k</td><td>xavi8k・B</td><td>VIT Derke→autumn 1:16</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R21</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 23.6k ― Full 22.6k</td><td>—</td><td>VIT Chronicle→UdoTan 1:32</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R22</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td>全滅</td><td class="num">Full 25.4k ― Full 20.4k</td><td>Kr1stal・B</td><td>VIT Derke→UdoTan 0:58</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 25.6k ― Full 23.9k</td><td>Kr1stal・B</td><td>VIT Chronicle→UdoTan 1:07</td></tr>
+<tr class="match-divider"><td colspan="7">2026-10-08 ― vs Nongshim RedForce（VITピック）<span class="md-score num">4 ― 13 負け</span></td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R1</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Pistol 3.8k ― Pistol 4.3k</td><td>Rb(NS)・B</td><td>VIT Chronicle→Dambi 1:31</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R2</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Conv. 18.8k ― Eco 3.8k</td><td>Rb・A</td><td>NS Ivy→PROFEK 1:32</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R3</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Eco 2.1k ― Full 21.0k</td><td>Dambi・A</td><td>記録なし</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R4</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>爆発</td><td class="num">Full 21.4k ― Full 22.3k</td><td>Rb・B</td><td>NS Francis→PROFEK 1:29</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R5</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 18.4k ― Full 24.2k</td><td>Rb・A</td><td>NS Dambi→PROFEK 1:24</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R6</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>時間切れ</td><td class="num">Full 20.6k ― Full 23.6k</td><td>—</td><td>VIT Chronicle→Ivy 1:11</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R7</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>爆発</td><td class="num">Full 21.4k ― Full 23.2k</td><td>Rb・B</td><td>NS Xross→Derke 1:14</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R8</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Full 20.9k ― Full 23.9k</td><td>Ivy・B</td><td>NS Dambi→Chronicle 1:29</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R9</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>爆発</td><td class="num">Full 18.7k ― Full 23.8k</td><td>Rb・A</td><td>NS Dambi→Jamppi 1:26</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R10</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 19.1k ― Full 24.2k</td><td>—</td><td>VIT Jamppi→Dambi 1:24</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R11</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Full 20.0k ― Full 23.5k</td><td>Rb・A</td><td>NS Ivy→Jamppi 0:43</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R12</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Half 11.9k ― Full 23.4k</td><td>Rb・B</td><td>NS Rb→Derke 1:22</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim RedForce</td><td>解除</td><td class="num">Pistol 4.1k ― Pistol 4.2k</td><td>Sayonara・B</td><td>VIT Derke→Rb 1:24</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Eco 3.3k ― Conv. 17.9k</td><td>—</td><td>NS Ivy→Jamppi 1:31</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim RedForce</td><td>解除</td><td class="num">Full 21.2k ― Bonus 15.5k</td><td>Jamppi・A</td><td>NS Dambi→Derke 1:34</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim RedForce</td><td>解除</td><td class="num">Half 17.9k ― Full 23.8k</td><td>Derke・B</td><td>NS Ivy→Derke 0:25（設置後）</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim RedForce</td><td>全滅</td><td class="num">Half 17.7k ― Full 23.6k</td><td>—</td><td>NS Francis→Jamppi 1:34</td></tr>
+<tr class="match-divider"><td colspan="7">2026-10-10 ― vs G2 Esports（G2ピック）<span class="md-score num">13 ― 11 勝ち</span></td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Pistol 4.1k ― Pistol 3.7k</td><td>Sayonara・A</td><td>VIT Chronicle→leaf 1:19</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Conv. 14.6k ― Eco 1.6k</td><td>Sayonara・A</td><td>VIT Jamppi→BABYBAY 1:37</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R3</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Bonus 19.8k ― Full 21.3k</td><td>Sayonara・B</td><td>G2 valyn→Derke 1:31</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R4</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.7k ― Eco 7.9k</td><td>Sayonara・A</td><td>VIT Derke→trent 0:53</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R5</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">G2 Esports</td><td>解除</td><td class="num">Full 25.6k ― Full 23.2k</td><td>Sayonara・A</td><td>G2 BABYBAY→Jamppi 1:37</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R6</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>爆発</td><td class="num">Full 21.3k ― Full 23.6k</td><td>Sayonara・A</td><td>G2 BABYBAY→Derke 1:24</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R7</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">G2 Esports</td><td>時間切れ</td><td class="num">Full 23.4k ― Half 12.9k</td><td>—</td><td>G2 leaf→Jamppi 1:26</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R8</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>爆発</td><td class="num">Full 23.1k ― Full 22.3k</td><td>Chronicle・B</td><td>G2 BABYBAY→Sayonara 1:31</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R9</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 20.3k ― Full 22.9k</td><td>Chronicle・B</td><td>G2 valyn→Derke 1:23</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R10</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 22.4k ― Full 18.4k</td><td>Sayonara・B</td><td>VIT Derke→leaf 0:58</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R11</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td>全滅</td><td class="num">Full 24.4k ― Half 12.4k</td><td>Sayonara・B</td><td>VIT Jamppi→JAWGEMO 1:25</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">G2 Esports</td><td>解除</td><td class="num">Full 27.1k ― Full 21.2k</td><td>PROFEK・B</td><td>G2 BABYBAY→Jamppi 0:49</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>爆発</td><td class="num">Pistol 4.0k ― Pistol 4.1k</td><td>trent・A</td><td>G2 JAWGEMO→Jamppi 1:20</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Eco 1.1k ― Conv. 16.8k</td><td>記録なし</td><td>記録なし</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Full 21.3k ― Bonus 18.9k</td><td>trent・B</td><td>G2 JAWGEMO→PROFEK 1:24</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Eco 6.7k ― Full 22.4k</td><td>推定A（フィード欠落、爆発死亡位置より）</td><td>VIT Sayonara→JAWGEMO 1:24</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R17</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 22.3k ― Full 22.9k</td><td>trent・B</td><td>VIT Jamppi→BABYBAY 0:22（設置後）</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R18</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>爆発</td><td class="num">Full 20.6k ― Full 22.3k</td><td>JAWGEMO・B</td><td>G2 JAWGEMO→PROFEK 1:22</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R19</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 18.8k ― Full 22.6k</td><td>trent・A</td><td>G2 JAWGEMO→Derke 1:38</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R20</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Full 23.2k ― Full 22.7k</td><td>valyn・A</td><td>VIT Chronicle→JAWGEMO 1:28</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R21</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Eco 6.3k ― Full 23.0k</td><td>leaf・B</td><td>VIT Jamppi→JAWGEMO 0:48</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R22</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2 Esports</td><td>全滅</td><td class="num">Full 21.0k ― Full 23.5k</td><td>valyn・A</td><td>G2 JAWGEMO→Jamppi 1:33</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 18.2k ― Full 23.2k</td><td>BABYBAY・B</td><td>G2 leaf→Chronicle 1:30</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R24</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td>解除</td><td class="num">Full 20.0k ― Full 22.2k</td><td>trent・B</td><td>VIT Chronicle→BABYBAY 1:35</td></tr>
 </tbody>
 </table>
 </div>
 </div>
-<p style="font-size:12.5px;color:var(--muted)">※経済「ピストル」はハーフ初回であることからの種別のみで、出典で個別に確認したものではありません。各試合の出典は下の「出典一覧」を見てください。</p>
+<p style="font-size:12.5px;color:var(--muted)">※プラントのサイト（A／B）はrib.gg 2Dリプレイのマップ位置からの推定です。NS戦R3とG2戦R14はribのフィード破損のため、一部項目が記録なしです。出典は下の「出典一覧」を見てください。</p>
 </section>
 
 <!-- ============ TODO ============ -->
 <section class="chapter" id="todo">
-<h2>VOD確認待ちの項目</h2>
-<p class="lead">以下はテキスト出典だけでは確定できず、推測で埋めていない項目です。プレイブックの完成にはVOD（またはラウンド単位データ）の確認が必要です。</p>
+<h2>残りの作業（GIF・分類・図解）</h2>
+<p class="lead">勝敗・勝利条件・経済・プラント・ファーストブラッドはvlr.gg／rib.ggで検証済みになりました。以下は残りの未確認・未実施の項目です。</p>
 <div class="panel" data-search>
 <ol class="todo-list">
-<li><strong>ラウンド単位の勝利条件</strong>：殲滅／設置・爆破／解除／時間切れの別（全64ラウンド分）</li>
-<li><strong>ラウンド単位の経済タイプ</strong>：ピストル／エコ／アンチエコ／ボーナス／フォース／フルバイの別（ハーフ初回のピストル以外）</li>
-<li><strong>ブロック内順序未確認ラウンドの個別勝者</strong>：G2戦 R5-12・R17-22、GE戦 R3-12・R20-23、NS戦 R1-12</li>
-<li><strong>序盤（オープニング）配置</strong>：各ラウンドの初期人数配置とファーストコンタクトの位置</li>
-<li><strong>中盤の動き</strong>：ローテーション、情報取り（Sovaドローン／リコン、Yoruテレポート）の使い方</li>
-<li><strong>エクセキューション</strong>：サイト攻めのユーティリティ順序、エントリーの分担（Jett／Yoruどちらが先行するか等）</li>
-<li><strong>ポストプラント配置</strong>：設置後の各選手ポジションと遅延手段</li>
-<li><strong>防衛セットアップ</strong>：センチネル不在をどう補うか（Harborウォール／Astraスターの固定配置、寄せの速さ）</li>
-<li><strong>型タグの付与と集計</strong>：上記が分からないため、攻撃カテゴリ（スモーク／索敵／形／エクセキューション／ポストプラント）と防衛「全体」の型ごとの採用数・勝率はまだ算出できない</li>
+<li><strong>ラウンドGIFの組み込み</strong>：全64ラウンド分をGeminiで作成中（1秒ごとにフレーム取得・5fps再生、上部バー＋ミニマップでタイマーとポストプラントが分かる形式）。届き次第、各型の代表ラウンドと索引に組み込む</li>
+<li><strong>型タグの付与と集計</strong>：GIF確認後に、攻撃カテゴリ（スモーク／索敵／形／エクセキューション／ポストプラント）と防衛の型ごとの採用数・勝率を算出する</li>
+<li><strong>序盤（オープニング）配置の検証</strong>：第1章の配置表（1-3-1等）が実戦と一致するか、GIFのバイフェーズから確認する</li>
+<li><strong>エクセキューションの詳細</strong>：サイト攻めのユーティリティ順序、エントリーの分担（Jett／Yoruどちらが先行するか等）</li>
+<li><strong>ポストプラント配置</strong>：設置後の各選手ポジション（解除負け8ラウンドの原因特定）</li>
 <li><strong>タイムアウト前後の変化</strong>：タイムアウト取得ラウンドと、その前後でのデフォルト／ペースの変化</li>
 <li><strong>VODタイムスタンプリンク</strong>：各ラウンドに付ける秒指定付きリンク</li>
-<li><strong>TactiVal図解</strong>：主要な型の配置図（第2・3章の枠に未登録として残置）</li>
+<li><strong>TactiVal図解</strong>：主要な型・配置の配置図（後日追加）</li>
 </ol>
 </div>
 </section>
@@ -748,7 +915,7 @@ a{ color:inherit; text-decoration:none;}
 <ul class="src-list">
 <li><span class="what">vs G2 ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/754734/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/754734/</a></li>
 <li><span class="what">vs Global Esports ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/753449/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/753449/</a></li>
-<li><span class="what">vs Global Esports ― Abyssタブ（構成の再確認）</span><a href="https://rib.gg/matches/987" target="_blank" rel="noopener">https://rib.gg/matches/987</a></li>
+<li><span class="what">vs Global Esports ― プラント・ファーストブラッド（rib.gg 2Dリプレイ）</span><a href="https://rib.gg/matches/987" target="_blank" rel="noopener">https://rib.gg/matches/987</a></li>
 <li><span class="what">vs Nongshim ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/754731/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/754731/</a></li>
 <li><span class="what">vs G2 ― シリーズ集計・ハーフ内訳（Stat Potato）</span><a href="https://www.statpotato.com/match/1685240" target="_blank" rel="noopener">https://www.statpotato.com/match/1685240</a></li>
 <li><span class="what">vs Global Esports ― シリーズ集計・ハーフ内訳（Stat Potato）</span><a href="https://www.statpotato.com/match/1682150" target="_blank" rel="noopener">https://www.statpotato.com/match/1682150</a></li>
@@ -756,6 +923,11 @@ a{ color:inherit; text-decoration:none;}
 <li><span class="what">vs G2 ― 叙述（ラウンドの流れ、egamersworld）</span><a href="https://egamersworld.com/valorant/news/37749/team-vitality-beat-g2-esports-to-reach-the-valoran-SJfYzPT1v" target="_blank" rel="noopener">https://egamersworld.com/valorant/news/37749/team-vitality-beat-g2-esports-to-reach-the-valoran-SJfYzPT1v</a></li>
 <li><span class="what">vs G2 ― 叙述（別ソース、ibet）</span><a href="https://ibet.news/e-sports/vitality-sweep-g2-to-reach-valorant-champions-upper-final/" target="_blank" rel="noopener">https://ibet.news/e-sports/vitality-sweep-g2-to-reach-valorant-champions-upper-final/</a></li>
 <li><span class="what">vs Nongshim ― 叙述（ハーフ経過、egamersworld）</span><a href="https://egamersworld.com/valorant/news/37715/team-vitality-beat-nongshim-redforce-to-reach-the--FoUqH_XYE" target="_blank" rel="noopener">https://egamersworld.com/valorant/news/37715/team-vitality-beat-nongshim-redforce-to-reach-the--FoUqH_XYE</a></li>
+<li><span class="what">vs Global Esports ― ラウンド勝敗・勝利条件・経済（vlr.gg）</span><a href="https://www.vlr.gg/753449/global-esports-vs-team-vitality-valorant-champions-2026-opening-b" target="_blank" rel="noopener">https://www.vlr.gg/753449/global-esports-vs-team-vitality-valorant-champions-2026-opening-b</a></li>
+<li><span class="what">vs Nongshim ― ラウンド勝敗・勝利条件・経済（vlr.gg）</span><a href="https://www.vlr.gg/754731/team-vitality-vs-nongshim-redforce-valorant-champions-2026-ubqf" target="_blank" rel="noopener">https://www.vlr.gg/754731/team-vitality-vs-nongshim-redforce-valorant-champions-2026-ubqf</a></li>
+<li><span class="what">vs G2 ― ラウンド勝敗・勝利条件・経済（vlr.gg）</span><a href="https://www.vlr.gg/754734/g2-esports-vs-team-vitality-valorant-champions-2026-ubsf" target="_blank" rel="noopener">https://www.vlr.gg/754734/g2-esports-vs-team-vitality-valorant-champions-2026-ubsf</a></li>
+<li><span class="what">vs Nongshim ― プラント・ファーストブラッド（rib.gg 2Dリプレイ）</span><a href="https://rib.gg/matches/1065/nongshim-redforce-vs-team-vitality" target="_blank" rel="noopener">https://rib.gg/matches/1065/nongshim-redforce-vs-team-vitality</a></li>
+<li><span class="what">vs G2 ― プラント・ファーストブラッド（rib.gg 2Dリプレイ）</span><a href="https://rib.gg/matches/1082/g2-esports-vs-team-vitality" target="_blank" rel="noopener">https://rib.gg/matches/1082/g2-esports-vs-team-vitality</a></li>
 <li><span class="what">形式の参考 ― LOUD Summit プレイブック</span><a href="https://ak47bbddk.github.io/loud-summit-playbook/" target="_blank" rel="noopener">https://ak47bbddk.github.io/loud-summit-playbook/</a></li>
 </ul>
 </div>
@@ -765,7 +937,7 @@ a{ color:inherit; text-decoration:none;}
 </div>
 
 <footer>
-<p>Vitality Abyss プレイブック ― Team Vitality の Abyss（ジェット＋ヨル構成）を、Champions 2026 の3試合・64ラウンド分統合した検証用ドラフトのHTML版です。事実と&#12304;推論&#12305;を分けて記載し、未確認の項目は「未確認／VOD確認待ち」と明記しています。次フェーズは3試合のVODをラウンド単位で確認し、型タグの採用数・勝率とTactiVal図解を埋める作業です。</p>
+<p>Vitality Abyss プレイブック ― Team Vitality の Abyss（ジェット＋ヨル構成）を、Champions 2026 の3試合・64ラウンド分統合したHTML版です。勝敗・勝利条件・経済・プラント・ファーストブラッドはvlr.gg／rib.ggで検証済みで、事実と&#12304;推論&#12305;を分けて記載しています。次フェーズはGemini作成のラウンドGIFで型タグの採用数・勝率を埋め、TactiVal図解を追加する作業です。</p>
 </footer>
 
 <script>
