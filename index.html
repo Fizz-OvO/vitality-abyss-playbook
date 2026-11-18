@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Vitality Abyss プレイブック｜ジェット＋ヨル構成（Champions 2026）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+--bg:#f3f3f0; --surface:#ffffff; --surface-2:#f8f8f5; --surface-3:#efefea;
+--ink:#17181c; --ink-2:#3c3f46; --muted:#62666e; --faint:#8a8e96;
+--line:#deddd6; --line-strong:#c9c8c0;
+--brand:#f2c200; --brand-ink:#161616; --brand-deep:#8a6d00;
+--atk:#c62f3b; --atk-bg:#fdeeee;
+--def:#1e50c8; --def-bg:#eaf0fd;
+--win:#0e7a3d; --win-bg:#e6f5ec;
+--loss:#9a3b32; --loss-bg:#f9ecea;
+--warn:#8a5a00; --warn-bg:#fdf3d7; --warn-line:#e3c766;
+--chip:#eef0f2;
+--shadow:0 1px 2px rgba(20,20,20,.05),0 4px 14px rgba(20,20,20,.05);
+--radius:10px;
+}
+@media (prefers-color-scheme: dark){
+:root{
+--bg:#101114; --surface:#191a1f; --surface-2:#1f2026; --surface-3:#26272e;
+--ink:#f0f0ec; --ink-2:#cfd0d4; --muted:#a3a6ad; --faint:#7c7f87;
+--line:#2e2f36; --line-strong:#3d3e46;
+--brand:#ffd21a; --brand-ink:#141414; --brand-deep:#ffd21a;
+--atk:#ff7a84; --atk-bg:#3a2226;
+--def:#8fb0ff; --def-bg:#232c47;
+--win:#5fd598; --win-bg:#1d3328;
+--loss:#ff9d94; --loss-bg:#382622;
+--warn:#ffcf5c; --warn-bg:#38300f; --warn-line:#6b5a1d;
+--chip:#26272e;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.3);
+}
+}
+html{ scroll-behavior:smooth;}
+body{
+margin:0; background:var(--bg); color:var(--ink);
+font-family:"Noto Sans JP",-apple-system,"Hiragino Kaku Gothic ProN",sans-serif;
+font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,p,ul,ol,figure{ margin:0;}
+ul{ padding-left:1.25em;}
+a{ color:var(--def);}
+button{ font:inherit; cursor:pointer; min-height:36px;}
+.num{ font-family:"Barlow Condensed","Noto Sans JP",sans-serif; letter-spacing:.02em;}
+
+/* ---------- top bar ---------- */
+.topbar{
+position:sticky; top:0; z-index:40; background:var(--surface);
+border-bottom:3px solid var(--brand);
+}
+.topbar-in{
+max-width:1340px; margin:0 auto; padding:10px 20px;
+display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+}
+.badge-playbook{
+background:var(--brand); color:var(--brand-ink); font-weight:900;
+font-size:12px; letter-spacing:.14em; padding:4px 10px; border-radius:4px; white-space:nowrap;
+}
+.topbar h1{ font-size:19px; font-weight:900; letter-spacing:.01em;}
+.topbar.sub{ color:var(--muted); font-size:12.5px; font-weight:500;}
+.topbar.spacer{ flex:1;}
+.top-meta{ font-size:12px; color:var(--muted); text-align:right; line-height:1.5;}
+.top-meta strong{ color:var(--ink);}
+
+/* ---------- layout ---------- */
+.layout{
+max-width:1340px; margin:0 auto; padding:18px 20px 64px;
+display:grid; grid-template-columns:272px minmax(0,1fr); gap:20px; align-items:start;
+}
+.layout.toc-hidden{ grid-template-columns:minmax(0,1fr);}
+.layout.toc-hidden.sidebar{ display:none;}
+
+/* ---------- sidebar / TOC ---------- */
+.sidebar{
+position:sticky; top:76px; max-height:calc(100vh - 96px); overflow:auto;
+background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+box-shadow:var(--shadow); padding:14px 14px 18px;
+}
+.sidebar-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;}
+.sidebar-head h2{ font-size:14px; font-weight:900;}
+.btn-ghost{
+background:var(--surface); border:1.5px solid var(--def); color:var(--def);
+border-radius:6px; padding:2px 12px; font-size:12.5px; font-weight:700; min-height:32px;
+}
+.toc-group{ margin-top:14px;}
+.toc-group > p{ font-size:12px; font-weight:700; color:var(--muted); margin-bottom:6px;}
+.toc a{
+display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--ink-2);
+font-size:13.5px; padding:7px 6px; border-radius:6px; min-height:36px;
+}
+.toc a:hover{ background:var(--surface-3); color:var(--ink);}
+.toc.cat{
+flex:none; font-size:10.5px; font-weight:700; border:1px solid var(--line-strong);
+border-radius:4px; padding:1px 6px; color:var(--muted); background:var(--surface-2); min-width:52px; text-align:center;
+}
+.toc.cnt{ margin-left:auto; font-size:12px; color:var(--faint); flex:none;}
+.toc.cnt.pending{ color:var(--warn); font-weight:700;}
+.toc-note{
+margin-top:16px; font-size:12px; color:var(--muted); background:var(--warn-bg);
+border:1px solid var(--warn-line); border-radius:8px; padding:10px 12px; line-height:1.6;
+}
+.toc-note strong{ color:var(--warn);}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+display:flex; gap:10px; align-items:stretch; flex-wrap:wrap;
+background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+box-shadow:var(--shadow); padding:10px; margin-bottom:16px;
+}
+.toolbar.search{ flex:1 1 260px; display:flex;}
+.toolbar input[type="search"]{
+flex:1; width:100%; font:inherit; font-size:14px; padding:8px 12px;
+border:1px solid var(--line-strong); border-radius:6px; background:var(--surface); color:var(--ink); min-height:40px;
+}
+.btn{
+border-radius:6px; padding:6px 16px; font-size:13.5px; font-weight:700; min-height:40px;
+border:1.5px solid var(--def); background:var(--surface); color:var(--def); white-space:nowrap;
+}
+.btn-solid{ background:var(--brand); border-color:var(--brand); color:var(--brand-ink);}
+.btn-solid:hover{ filter:brightness(.96);}
+.search-status{ font-size:12.5px; color:var(--muted); align-self:center;}
+
+/* ---------- stat cards ---------- */
+.stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+.stat{
+background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+box-shadow:var(--shadow); padding:14px 16px 12px;
+}
+.stat.label{ font-size:12.5px; font-weight:700; color:var(--muted);}
+.stat.value{ font-size:30px; font-weight:700; line-height:1.15; color:var(--ink);}
+.stat.value.unit{ font-size:16px; font-weight:700;}
+.stat.detail{ font-size:12.5px; color:var(--muted); margin-top:2px;}
+.stat.atk.value{ color:var(--atk);}
+.stat.def.value{ color:var(--def);}
+.bar{ height:8px; border-radius:99px; background:var(--surface-3); overflow:hidden; margin-top:8px; display:flex;}
+.bar > span{ display:block; height:100%;}
+.bar.w{ background:var(--win);}
+.bar.l{ background:var(--line-strong);}
+.bar-legend{ display:flex; gap:14px; font-size:12px; color:var(--muted); margin-top:6px;}
+
+.notice{
+background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:var(--radius);
+padding:12px 16px; font-size:13.5px; color:var(--ink-2); margin-bottom:26px; line-height:1.7;
+}
+.notice strong{ color:var(--warn);}
+
+/* ---------- chapters ---------- */
+.chapter{ margin-top:38px; scroll-margin-top:84px;}
+.chapter > h2{
+font-size:23px; font-weight:900; padding-left:14px; border-left:6px solid var(--brand);
+line-height:1.35; margin-bottom:6px;
+}
+.chapter.lead{ color:var(--muted); font-size:14px; margin:0 0 16px 20px; max-width:72ch;}
+.panel{
+background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+box-shadow:var(--shadow); padding:18px 20px; margin-bottom:14px;
+}
+.panel h3{ font-size:16px; font-weight:900; margin-bottom:10px;}
+.panel h3.tag-infer{
+display:inline-block; vertical-align:2px; margin-right:8px; font-size:11.5px; font-weight:900;
+background:var(--warn); color:#fff; border-radius:4px; padding:2px 8px; letter-spacing:.06em;
+}
+@media (prefers-color-scheme: dark){.panel h3.tag-infer{ color:#1a1400;}}
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+.mini-card{
+background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:14px 16px;
+}
+.mini-card h4{ font-size:14.5px; font-weight:900; color:var(--brand-deep); margin-bottom:8px;}
+.mini-card ul{ font-size:13.5px; color:var(--ink-2);}
+.mini-card li{ margin-bottom:6px;}
+.mini-card li::marker{ color:var(--faint);}
+.fact-list{ font-size:14px; color:var(--ink-2);}
+.fact-list li{ margin-bottom:7px;}
+.infer-panel{ border-color:var(--warn-line); background:var(--warn-bg);}
+.infer-panel p,.infer-panel li{ color:var(--ink-2);}
+.infer-panel.disclaimer{ font-size:12.5px; color:var(--warn); font-weight:700; margin-top:10px;}
+
+/* composition table */
+.table-wrap{ overflow-x:auto;}
+table{ border-collapse:collapse; width:100%; font-size:13.5px;}
+th,td{ padding:8px 10px; text-align:left; vertical-align:top;}
+thead th{ font-size:12px; color:var(--muted); border-bottom:2px solid var(--line-strong); white-space:nowrap;}
+tbody td{ border-bottom:1px solid var(--line);}
+tbody tr:last-child td{ border-bottom:none;}
+.agent-dot{ display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; vertical-align:0;}
+.player{ font-weight:900; font-size:14.5px;}
+.agent{ font-weight:700;}
+.role-chip{
+display:inline-block; font-size:11px; font-weight:700; border-radius:99px; padding:1px 9px;
+background:var(--chip); color:var(--ink-2); border:1px solid var(--line);
+}
+
+/* matches */
+.match-head{ display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline; margin-bottom:4px;}
+.match-head.date{ font-size:12.5px; color:var(--muted); font-weight:700;}
+.match-head.vs{ font-size:17px; font-weight:900;}
+.match-head.stage{ font-size:12.5px; color:var(--muted);}
+.score{ margin-left:auto; font-size:26px; font-weight:700; line-height:1;}
+.score.win{ color:var(--win);}.score.loss{ color:var(--loss);}
+.pick-chip{ font-size:11.5px; font-weight:700; border:1px solid var(--line-strong); border-radius:4px; padding:1px 8px; color:var(--muted);}
+.halves{ display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 14px;}
+.half{
+flex:1 1 180px; border:1px solid var(--line); border-radius:8px; padding:9px 12px; background:var(--surface-2);
+display:flex; align-items:center; gap:10px; font-size:13px;
+}
+.half.side{ font-weight:900; font-size:12px; padding:2px 9px; border-radius:4px; flex:none;}
+.side-atk{ background:var(--atk-bg); color:var(--atk);}
+.side-def{ background:var(--def-bg); color:var(--def);}
+.half.hv{ font-size:19px; font-weight:700;}
+.half.hw{ color:var(--muted); font-size:12px; margin-left:auto; text-align:right;}
+.kills{ margin-top:4px;}
+.kill-row{ display:grid; grid-template-columns:118px 1fr 44px; gap:10px; align-items:center; padding:3px 0; font-size:13px;}
+.kill-row.who{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.kill-row.track{ height:10px; background:var(--surface-3); border-radius:99px; overflow:hidden;}
+.kill-row.fill{ height:100%; background:var(--brand); border-radius:99px;}
+.kill-row.kv{ text-align:right; font-weight:700; font-size:16px;}
+.kills-total{ font-size:12px; color:var(--muted); margin-top:6px;}
+
+/* type cards (attack / defense) */
+.type-card{
+background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+box-shadow:var(--shadow); padding:16px 18px 18px; margin-bottom:14px; scroll-margin-top:84px;
+}
+.type-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; border-bottom:1px solid var(--line); padding-bottom:10px;}
+.side-pill{ font-size:11.5px; font-weight:900; border-radius:4px; padding:2px 9px;}
+.cat-pill{ font-size:11.5px; font-weight:700; border:1px solid var(--line-strong); border-radius:4px; padding:2px 9px; color:var(--muted); background:var(--surface-2);}
+.type-head h3{ font-size:17px; font-weight:900;}
+.type-head.adopt{ margin-left:auto; font-size:13px; color:var(--muted);}
+.type-head.adopt strong{ color:var(--warn);}
+.type-cols{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;}
+.slot{ background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:12px 14px;}
+.slot > p:first-child{ font-size:12px; font-weight:900; color:var(--muted); margin-bottom:8px;}
+.tactival-empty{
+border:1.5px dashed var(--line-strong); border-radius:6px; background:var(--surface);
+color:var(--muted); font-size:13px; text-align:center; padding:26px 14px; line-height:1.7;
+}
+.empty-text{ color:var(--muted); font-size:13.5px;}
+.rep-rounds{ margin-top:14px;}
+.rep-rounds h4{ font-size:14px; font-weight:900; margin-bottom:6px;}
+.half-facts{ font-size:14px; color:var(--ink-2);}
+.half-facts li{ margin-bottom:8px;}
+.half-facts.m{ font-weight:900; color:var(--ink);}
+
+/* round index */
+.filters{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; align-items:center;}
+.filters.fbtn{
+border:1.5px solid var(--line-strong); background:var(--surface); color:var(--ink-2);
+border-radius:99px; padding:5px 16px; font-size:13px; font-weight:700; min-height:36px;
+}
+.filters.fbtn[aria-pressed="true"]{ background:var(--ink); border-color:var(--ink); color:var(--bg);}
+.filters.fcount{ font-size:12.5px; color:var(--muted); margin-left:auto;}
+.round-table td.r{ font-weight:900; white-space:nowrap;}
+.round-table td{ font-size:13px;}
+.winner{ font-weight:900; white-space:nowrap;}
+.winner.vit{ color:var(--win);}
+.winner.opp{ color:var(--loss);}
+.winner.block{ color:var(--ink-2); font-weight:700; white-space:normal;}
+.unknown{ color:var(--faint);}
+.unknown-note{ color:var(--warn); font-weight:700; font-size:12px;}
+.basis{ color:var(--muted); font-size:12.5px;}
+tr.block-row td{ background:var(--surface-2);}
+.match-divider td{
+background:var(--surface-3); font-weight:900; font-size:13.5px; border-bottom:1px solid var(--line-strong);
+}
+.match-divider.md-score{ float:right;}
+
+/* sources */
+.src-list{ list-style:none; padding:0;}
+.src-list li{ padding:9px 0; border-bottom:1px solid var(--line); font-size:13.5px;}
+.src-list li:last-child{ border-bottom:none;}
+.src-list.what{ font-weight:700; color:var(--ink); display:block;}
+.src-list a{ word-break:break-all; font-size:12.5px;}
+.todo-list{ font-size:14px; color:var(--ink-2);}
+.todo-list li{ margin-bottom:7px;}
+footer{ max-width:1340px; margin:0 auto; padding:0 20px 40px; color:var(--faint); font-size:12px; line-height:1.7;}
+.no-hit{ display:none; background:var(--surface); border:1px dashed var(--line-strong); border-radius:var(--radius); padding:18px; text-align:center; color:var(--muted); font-size:14px; margin-bottom:14px;}
+.no-hit.show{ display:block;}
+.layout > *, main, .panel, .stat, .mini-card, .type-card, .slot, .half{ min-width:0;}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+.stats{ grid-template-columns:repeat(2,1fr);}
+.grid-3{ grid-template-columns:minmax(0,1fr);}
+}
+@media (max-width:860px){
+.layout{ grid-template-columns:minmax(0,1fr); padding:14px 12px 48px;}
+.sidebar{ position:static; max-height:none; order:2;}
+.type-cols{ grid-template-columns:minmax(0,1fr);}
+.grid-2{ grid-template-columns:minmax(0,1fr);}
+.topbar-in{ padding:10px 12px;}
+.top-meta{ display:none;}
+.chapter > h2{ font-size:20px;}
+.chapter.lead{ margin-left:20px;}
+.score{ margin-left:0;}
+.kill-row{ grid-template-columns:104px 1fr 40px;}
+}
+.print-note{
+display:none; background:var(--surface); border:1.5px dashed var(--brand-deep); border-radius:var(--radius);
+padding:12px 16px; margin-bottom:16px; font-size:13.5px; color:var(--ink-2);
+align-items:center; gap:12px; flex-wrap:wrap;
+}
+body.print-mode .print-note{ display:flex; }
+body.print-mode{ background:#fff; }
+body.print-mode .sidebar, body.print-mode .toolbar, body.print-mode .filters{ display:none !important; }
+body.print-mode .layout{ grid-template-columns:minmax(0,1fr); }
+body.print-mode .panel, body.print-mode .type-card, body.print-mode .stat{ box-shadow:none; }
+@media print{
+.topbar{ position:static;}
+.sidebar,.toolbar,.filters,.btn-ghost{ display:none!important;}
+.layout{ grid-template-columns:1fr; padding:8px 0;}
+body{ background:#fff;}
+.panel,.type-card,.stat{ box-shadow:none; break-inside:avoid;}
+.chapter{ break-before:auto;}
+a{ color:inherit; text-decoration:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+<div class="topbar-in">
+<span class="badge-playbook">PLAYBOOK</span>
+<div>
+<h1>Vitality Abyss プレイブック</h1>
+<p class="sub">Team Vitality ― Abyss ― ジェット＋ヨル構成（Champions 2026）</p>
+</div>
+<div class="spacer"></div>
+<p class="top-meta">対象：<strong>3試合・64ラウンド</strong>を統合<br />作成：2026-11-18（検証済み事実ベース）</p>
+</div>
+</header>
+
+<div class="layout" id="layout">
+
+<!-- ============ TOC SIDEBAR ============ -->
+<aside class="sidebar" id="sidebar" aria-label="目次">
+<div class="sidebar-head">
+<h2>目次ナビ</h2>
+<button class="btn-ghost" id="tocClose" type="button">閉じる</button>
+</div>
+<nav class="toc">
+<div class="toc-group">
+<p>構成コンセプト</p>
+<a href="#ch1"><span>1. 構成コンセプト</span></a>
+<a href="#matches"><span>対象試合・選手別キル</span></a>
+</div>
+<div class="toc-group">
+<p>攻撃の型・タグ（Attack）</p>
+<a href="#atk-smoke"><span class="cat">スモーク</span><span>スモーク全般</span><span class="cnt pending">未分類</span></a>
+<a href="#atk-info"><span class="cat">索敵</span><span>索敵全般</span><span class="cnt pending">未分類</span></a>
+<a href="#atk-shape"><span class="cat">形</span><span>デフォルト等の形</span><span class="cnt pending">未分類</span></a>
+<a href="#atk-exec"><span class="cat">エクセキューション</span><span>サイト攻め</span><span class="cnt pending">未分類</span></a>
+<a href="#atk-post"><span class="cat">ポストプラント</span><span>設置後の配置</span><span class="cnt pending">未分類</span></a>
+</div>
+<div class="toc-group">
+<p>防衛の型・タグ（Defense）</p>
+<a href="#def-all"><span class="cat">全体</span><span>防衛セットアップ全般</span><span class="cnt pending">未分類</span></a>
+</div>
+<div class="toc-group">
+<p>索引・出典</p>
+<a href="#ch4"><span>4. 全ラウンド索引</span><span class="cnt">64R</span></a>
+<a href="#sources"><span>出典一覧</span></a>
+<a href="#todo"><span>VOD確認待ちの項目</span></a>
+</div>
+</nav>
+<p class="toc-note"><strong>読み方：</strong>型タグの採用数・勝率は、ラウンド単位のVOD分類が終わるまで集計できません。このページでは推測で埋めず、参考プレイブックと同じく「未登録／VOD確認待ち」の枠として残しています。</p>
+</aside>
+
+<!-- ============ MAIN ============ -->
+<main id="main">
+
+<div class="toolbar" role="search">
+<button class="btn" id="tocOpen" type="button" hidden>目次を表示</button>
+<div class="search">
+<input type="search" id="searchInput" placeholder="プレイブック内を検索（例：スモーク、索敵、G2、ピストル、未確認…）" aria-label="プレイブック内を検索" />
+</div>
+<span class="search-status" id="searchStatus" aria-live="polite"></span>
+<button class="btn btn-solid" id="printBtn" type="button">印刷 / PDF用レイアウト</button>
+</div>
+
+<div class="print-note" role="note"><span>印刷用レイアウトで表示中です。このままブラウザの印刷（<strong>Ctrl+P</strong> / <strong>⌘+P</strong>）を開き、「PDFとして保存」を選んでください。</span><button class="btn" id="printExit" type="button">通常表示に戻す</button></div>
+<section class="stats" aria-label="集計サマリー">
+<div class="stat">
+<p class="label">対象試合</p>
+<p class="value num">3 <span class="unit">試合</span></p>
+<p class="detail">Champions 2026 ／ マップ成績 2勝1敗</p>
+</div>
+<div class="stat">
+<p class="label">対象ラウンド</p>
+<p class="value num">64 <span class="unit">R</span></p>
+<p class="detail">ラウンド勝敗 30勝 ― 34敗</p>
+<div class="bar" aria-hidden="true"><span class="w" style="width:46.9%"></span><span class="l" style="width:53.1%"></span></div>
+<div class="bar-legend"><span>勝ち 30（46.9%）</span><span>負け 34</span></div>
+</div>
+<div class="stat atk">
+<p class="label">攻撃ラウンド</p>
+<p class="value num">17<span class="unit">勝</span> ― 12<span class="unit">敗</span></p>
+<p class="detail">29ラウンド ／ 勝率 58.6%</p>
+<div class="bar" aria-hidden="true"><span class="w" style="width:58.6%"></span><span class="l" style="width:41.4%"></span></div>
+</div>
+<div class="stat def">
+<p class="label">防衛ラウンド</p>
+<p class="value num">13<span class="unit">勝</span> ― 22<span class="unit">敗</span></p>
+<p class="detail">35ラウンド ／ 勝率 37.1%</p>
+<div class="bar" aria-hidden="true"><span class="w" style="width:37.1%"></span><span class="l" style="width:62.9%"></span></div>
+</div>
+</section>
+
+<p class="notice"><strong>このページの状態：</strong>構成・試合結果・ハーフ内訳・選手別キル・ラウンド勝敗（ブロック単位）は出典で検証済みです。一方、ラウンドごとの<strong>勝利条件・経済タイプ・型タグ</strong>はテキスト出典では確認できなかったため、全て「未確認（VOD確認待ち）」と明記しています。ブロック内の個別ラウンド順序も未確認のものは、その旨を索引に書いています。</p>
+
+<p class="no-hit" id="noHit">検索に一致する項目がありません。キーワードを変えてみてください。</p>
+
+<!-- ============ CH 1 ============ -->
+<section class="chapter" id="ch1">
+<h2>1. 構成コンセプト（ジェット＋ヨル構成）</h2>
+<p class="lead">2デュエリスト＋2コントローラー＋イニシエーター1名。センチネル不在の固定構成を、相手もピックも異なる3試合で使い続けた。</p>
+
+<div class="panel" data-search>
+<h3>構成（3試合すべてで同一）</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>選手</th><th>エージェント</th><th>ロール</th><th>3試合合計キル</th></tr></thead>
+<tbody>
+<tr><td class="player">Jamppi</td><td class="agent"><span class="agent-dot" style="background:#7b4dff"></span>Yoru（ヨル）</td><td><span class="role-chip">デュエリスト</span></td><td class="num" style="font-size:17px;font-weight:700">45</td></tr>
+<tr><td class="player">Derke</td><td class="agent"><span class="agent-dot" style="background:#37b6d9"></span>Jett（ジェット）</td><td><span class="role-chip">デュエリスト</span></td><td class="num" style="font-size:17px;font-weight:700">42</td></tr>
+<tr><td class="player">PROFEK</td><td class="agent"><span class="agent-dot" style="background:#5a3fa8"></span>Astra（アストラ）</td><td><span class="role-chip">コントローラー</span></td><td class="num" style="font-size:17px;font-weight:700">40</td></tr>
+<tr><td class="player">Chronicle</td><td class="agent"><span class="agent-dot" style="background:#1f9e8a"></span>Harbor（ハーバー）</td><td><span class="role-chip">コントローラー</span></td><td class="num" style="font-size:17px;font-weight:700">40</td></tr>
+<tr><td class="player">Sayonara</td><td class="agent"><span class="agent-dot" style="background:#3f7fd1"></span>Sova（ソーヴァ）</td><td><span class="role-chip">イニシエーター</span></td><td class="num" style="font-size:17px;font-weight:700">38</td></tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:12.5px;color:var(--muted);margin-top:10px">合計キルは各試合のマップ別スタッツ（bernielaird.com）の合算。試合別の内訳は下の「対象試合」にあります。</p>
+</div>
+
+<div class="grid-3">
+<div class="mini-card" data-search>
+<h4>事実：ロール配分</h4>
+<ul>
+<li>2デュエリスト（Jett / Yoru）＋ 2コントローラー（Astra / Harbor）＋ 1イニシエーター（Sova）</li>
+<li><strong>センチネルは不在</strong></li>
+<li>自ピック2回・相手ピック1回と条件が違う3試合で同一構成 ＝ Abyssの「固定構成」として運用されていた</li>
+</ul>
+</div>
+<div class="mini-card" data-search>
+<h4>事実：数値の非対称</h4>
+<ul>
+<li>攻撃は <strong>17勝12敗</strong>と勝ち越し、防衛は <strong>13勝22敗</strong>と大きく負け越し</li>
+<li>マップ成績は2勝1敗なのに、ラウンドでは30勝34敗（Nongshim戦 4-13 の大敗が効いている）</li>
+<li>G2戦ではJamppi（Yoru）が22キルでマップ最多級、GE戦でも18キル。NS戦ではチーム最多でもChronicleの12キルに留まった</li>
+</ul>
+</div>
+<div class="mini-card" data-search>
+<h4>検証の進み具合</h4>
+<ul>
+<li>構成・結果・ハーフ内訳・キル：<strong>検証済み</strong></li>
+<li>ラウンド勝敗：ハーフ／連取ブロック単位まで検証済み（ブロック内順序は一部未確認）</li>
+<li>型タグ・勝利条件・経済・配置図：<strong>VOD確認待ち</strong>（第2〜4章の枠参照）</li>
+</ul>
+</div>
+</div>
+
+<div class="panel infer-panel" data-search style="margin-top:12px">
+<h3><span class="tag-infer">推論</span>構成コンセプトの分析（事実ではありません）</h3>
+<ul class="fact-list">
+<li>センチネル不在のため、防衛ではエリア保持を「置きエージェント」ではなく、Astra／Harborのユーティリティと人数の寄せで代替する設計とみられる。防衛の負け越し（13-22）はこの弱点と整合的だが、因果はVODなしには断定できない。</li>
+<li>ダブルコントローラーは、Abyssのような縦に長いマップでスモーク／ウォールのレイヤーを重ね、YoruのテレポートとJettのダッシュで「見せてから別サイトへ」の圧を作る狙いが考えられる。</li>
+<li>イニシエーターがSova単独のため、情報取りはドローン／リコンボルトへの依存度が高く、Yoruのフェイクと合わせて相手のローテーションを遅らせる設計の可能性がある。</li>
+<li>攻撃の好成績（17-12）と防衛の不振という非対称は、次回VOD分類で最初に検証すべき仮説である。</li>
+</ul>
+<p class="disclaimer">※ この枠内はすべて&#12304;推論&#12305;です。出典で確認できた事実は上のカードと第4章の索引だけです。</p>
+</div>
+</section>
+
+<!-- ============ MATCHES ============ -->
+<section class="chapter" id="matches">
+<h2>対象試合（3試合統合）</h2>
+<p class="lead">候補3試合すべてが目標構成（Jett＋Yoru＋Astra＋Harbor＋Sova）と一致したため、除外試合はありません。並びは日付順です。</p>
+
+<article class="panel" data-search>
+<div class="match-head">
+<span class="date num">2026-09-26</span>
+<span class="vs">vs Global Esports</span>
+<span class="stage">Champions 2026 ― Group B Opening</span>
+<span class="pick-chip">VITピック</span>
+<span class="score num"><span class="win">13</span> ― 10</span>
+</div>
+<div class="halves">
+<div class="half"><span class="side side-atk">攻撃</span><span class="hv num">8 ― 4</span><span class="hw">前半<br />序盤0-2から8勝して折り返し</span></div>
+<div class="half"><span class="side side-def">防衛</span><span class="hv num">5 ― 6</span><span class="hw">後半<br />10-4 → 5連敗で9-10 → 最後4Rで3勝</span></div>
+</div>
+<div class="kills" aria-label="選手別キル（Global Esports戦）">
+<div class="kill-row"><span class="who"><strong>PROFEK</strong> ・ Astra</span><span class="track"><span class="fill" style="width:82%"></span></span><span class="kv num">18</span></div>
+<div class="kill-row"><span class="who"><strong>Jamppi</strong> ・ Yoru</span><span class="track"><span class="fill" style="width:82%"></span></span><span class="kv num">18</span></div>
+<div class="kill-row"><span class="who"><strong>Sayonara</strong> ・ Sova</span><span class="track"><span class="fill" style="width:77%"></span></span><span class="kv num">17</span></div>
+<div class="kill-row"><span class="who"><strong>Derke</strong> ・ Jett</span><span class="track"><span class="fill" style="width:77%"></span></span><span class="kv num">17</span></div>
+<div class="kill-row"><span class="who"><strong>Chronicle</strong> ・ Harbor</span><span class="track"><span class="fill" style="width:64%"></span></span><span class="kv num">14</span></div>
+<p class="kills-total">チーム合計 84キル ／ 出典：bernielaird.com マップ別スタッツ、rib.gg Abyssタブでも同一構成を確認</p>
+</div>
+</article>
+
+<article class="panel" data-search>
+<div class="match-head">
+<span class="date num">2026-10-08</span>
+<span class="vs">vs Nongshim RedForce</span>
+<span class="stage">Champions 2026 ― Playoffs Upper QF</span>
+<span class="pick-chip">VITピック</span>
+<span class="score num">4 ― <span class="loss">13</span></span>
+</div>
+<div class="halves">
+<div class="half"><span class="side side-def">防衛</span><span class="hv num">4 ― 8</span><span class="hw">前半<br />防衛はこの前半のみ</span></div>
+<div class="half"><span class="side side-atk">攻撃</span><span class="hv num">0 ― 5</span><span class="hw">後半<br />1ラウンドも取れず全敗</span></div>
+</div>
+<div class="kills" aria-label="選手別キル（Nongshim戦）">
+<div class="kill-row"><span class="who"><strong>Chronicle</strong> ・ Harbor</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="kv num">12</span></div>
+<div class="kill-row"><span class="who"><strong>Sayonara</strong> ・ Sova</span><span class="track"><span class="fill" style="width:41%"></span></span><span class="kv num">9</span></div>
+<div class="kill-row"><span class="who"><strong>Derke</strong> ・ Jett</span><span class="track"><span class="fill" style="width:36%"></span></span><span class="kv num">8</span></div>
+<div class="kill-row"><span class="who"><strong>PROFEK</strong> ・ Astra</span><span class="track"><span class="fill" style="width:23%"></span></span><span class="kv num">5</span></div>
+<div class="kill-row"><span class="who"><strong>Jamppi</strong> ・ Yoru</span><span class="track"><span class="fill" style="width:23%"></span></span><span class="kv num">5</span></div>
+<p class="kills-total">チーム合計 39キル ／ 出典：bernielaird.com マップ別スタッツ。敗戦だが構成は同一のため統合対象に含める</p>
+</div>
+</article>
+
+<article class="panel" data-search>
+<div class="match-head">
+<span class="date num">2026-10-10</span>
+<span class="vs">vs G2 Esports</span>
+<span class="stage">Champions 2026 ― Playoffs Upper SF</span>
+<span class="pick-chip">G2ピック</span>
+<span class="score num"><span class="win">13</span> ― 11</span>
+</div>
+<div class="halves">
+<div class="half"><span class="side side-atk">攻撃</span><span class="hv num">9 ― 3</span><span class="hw">前半<br />開始4連取スタート</span></div>
+<div class="half"><span class="side side-def">防衛</span><span class="hv num">4 ― 8</span><span class="hw">後半<br />開始4連敗で11-11 → 最後2Rを取り切り</span></div>
+</div>
+<div class="kills" aria-label="選手別キル（G2戦）">
+<div class="kill-row"><span class="who"><strong>Jamppi</strong> ・ Yoru</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="kv num">22</span></div>
+<div class="kill-row"><span class="who"><strong>Derke</strong> ・ Jett</span><span class="track"><span class="fill" style="width:77%"></span></span><span class="kv num">17</span></div>
+<div class="kill-row"><span class="who"><strong>PROFEK</strong> ・ Astra</span><span class="track"><span class="fill" style="width:77%"></span></span><span class="kv num">17</span></div>
+<div class="kill-row"><span class="who"><strong>Chronicle</strong> ・ Harbor</span><span class="track"><span class="fill" style="width:64%"></span></span><span class="kv num">14</span></div>
+<div class="kill-row"><span class="who"><strong>Sayonara</strong> ・ Sova</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="kv num">12</span></div>
+<p class="kills-total">チーム合計 82キル ／ 出典：bernielaird.com マップ別スタッツ</p>
+</div>
+</article>
+</section>
+
+<!-- ============ CH 2 ATTACK ============ -->
+<section class="chapter" id="ch2">
+<h2>2. 攻撃側の戦術・タグ（Attack）</h2>
+<p class="lead">分類枠（攻防 × カテゴリ × 型タグ、マルチタグ方式）は用意しましたが、型の採用数・勝率はラウンド分類が終わるまで集計できません。ここでは枠と、出典のあるハーフ単位の事実だけを載せています。</p>
+
+<div class="panel" data-search>
+<h3>出典のある攻撃面の事実（ハーフ単位）</h3>
+<ul class="half-facts">
+<li><span class="m">vs G2（攻撃 9-3）：</span>開始4ラウンド連取、その後さらに4連取の区間があった。（egamersworld / ibet）</li>
+<li><span class="m">vs Global Esports（攻撃 8-4）：</span>ピストルを含む序盤0-2から、残り10ラウンドで8勝してハーフを終えた。（talkesport）</li>
+<li><span class="m">vs Nongshim（攻撃 0-5）：</span>後半は1ラウンドも取れなかった。（egamersworld）</li>
+</ul>
+</div>
+
+<article class="type-card" id="atk-smoke" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">スモーク</span>
+<h3>スモーク全般（Astra / Harbor）</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、スモーク配置図を追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。ダブルコントローラーのスモーク／ウォールの重ね方は&#12304;推論&#12305;として第1章にのみ記載し、この枠は分類後に埋めます）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+
+<article class="type-card" id="atk-info" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">索敵</span>
+<h3>索敵全般（Sova / Yoru）</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、リコン／ドローンの範囲図を追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。Sova単独イニシエーターのため、索敵の依存先はVODで確認します）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+
+<article class="type-card" id="atk-shape" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">形</span>
+<h3>形（デフォルト等）</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、デフォルト配置図を追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。各ラウンドの初期人数配置は未確認です）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+
+<article class="type-card" id="atk-exec" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">エクセキューション</span>
+<h3>エクセキューション（サイト攻め）</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、エントリーとユーティリティの向きを追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。Jett／Yoruどちらが先行するか等の分担は未確認です）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+
+<article class="type-card" id="atk-post" data-search>
+<div class="type-head">
+<span class="side-pill side-atk">攻撃</span><span class="cat-pill">ポストプラント</span>
+<h3>ポストプラント（設置後の配置）</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、設置後の立ち位置図を追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。設置後の各選手ポジションと遅延手段は未確認です）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+</section>
+
+<!-- ============ CH 3 DEFENSE ============ -->
+<section class="chapter" id="ch3">
+<h2>3. 防衛側の戦術（Defense）</h2>
+<p class="lead">防衛はカテゴリ「全体」として枠を用意し、型タグの採用数・勝率は分類待ちです。センチネル不在をどう補うか（Harborウォール／Astraスターの固定配置、寄せの速さ）が分類の焦点になります。</p>
+
+<div class="panel" data-search>
+<h3>出典のある防衛面の事実（ハーフ単位）</h3>
+<ul class="half-facts">
+<li><span class="m">vs G2（防衛 4-8）：</span>後半開始直後に4連敗し、11-11まで追いつかれたが、最後の2ラウンド（R23・R24）を取り切った。R23はポストプラント状況でDerkeが複数キルを取るクラッチ性のラウンドだったことが映像クリップの説明で確認できる（勝利条件の詳細は未確認）。</li>
+<li><span class="m">vs Global Esports（防衛 5-6）：</span>後半ピストルを取り10-4とした後、5連敗で9-10まで迫られたが、最後の4ラウンドで3勝して閉めた。（talkesport）</li>
+<li><span class="m">vs Nongshim（防衛 4-8）：</span>前半の防衛のみ。後半の攻撃で全敗したため、防衛ラウンドはこの12ラウンドだけ。</li>
+</ul>
+</div>
+
+<article class="type-card" id="def-all" data-search>
+<div class="type-head">
+<span class="side-pill side-def">防衛</span><span class="cat-pill">全体</span>
+<h3>防衛セットアップ全般</h3>
+<span class="adopt">採用：<strong>未分類</strong> ｜ 勝率：<strong>VOD確認待ち</strong></span>
+</div>
+<div class="type-cols">
+<div class="slot"><p>TactiVal 図解</p><div class="tactival-empty">TactiVal 画像未登録<br />（VOD分類後に、防衛セットアップ図を追加）</div></div>
+<div class="slot"><p>戦術のポイント・説明</p><p class="empty-text">（説明文はまだ登録されていません。センチネル不在の補い方は&#12304;推論&#12305;として第1章にのみ記載しています）</p></div>
+</div>
+<div class="rep-rounds"><h4>代表的なラウンド（実戦例）</h4><p class="empty-text">この型に紐づいたラウンドはまだありません（VOD確認待ち）。</p></div>
+</article>
+</section>
+
+<!-- ============ CH 4 ROUND INDEX ============ -->
+<section class="chapter" id="ch4">
+<h2>4. 全ラウンド索引</h2>
+<p class="lead">全64ラウンド分を、出典で確定している単位（個別ラウンド／連取ブロック）で並べています。「ブロック内順序未確認」の行は、ハーフや連取区間の集計だけが確定しており、個別ラウンドの勝者は断定していません。勝利条件と経済タイプは、テキスト出典にラウンド単位の情報がなかったため、ハーフ初回のピストル（種別のみ）を除き全行「未確認」です。</p>
+
+<div class="filters" role="group" aria-label="ラウンド索引の絞り込み">
+<button class="fbtn" type="button" data-filter="all" aria-pressed="true">すべて</button>
+<button class="fbtn" type="button" data-filter="atk" aria-pressed="false">攻撃のみ</button>
+<button class="fbtn" type="button" data-filter="def" aria-pressed="false">防衛のみ</button>
+<button class="fbtn" type="button" data-filter="vitwin" aria-pressed="false">VIT勝ち（確定分）</button>
+<span class="fcount" id="filterCount"></span>
+</div>
+
+<div class="panel" style="padding:6px 14px">
+<div class="table-wrap">
+<table class="round-table" id="roundTable">
+<thead><tr><th style="width:64px">R</th><th style="width:64px">VITサイド</th><th style="width:210px">勝者</th><th>勝利条件</th><th>経済</th><th>根拠（出典で確定している範囲）</th></tr></thead>
+<tbody>
+<tr class="match-divider"><td colspan="6">2026-09-26 ― vs Global Esports（VITピック）<span class="md-score num">13 ― 10 勝ち</span></td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">ピストルを落とし0-2</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">0-2</td></tr>
+<tr class="block-row" data-side="atk" data-winner="block"><td class="r num">R3-12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner block">VIT 8勝・GE 2勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">ハーフ 8-4 で確定</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半ピストル取得、10-4へ</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">10-4 到達で確定</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R18</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R19</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">Global Esports</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">GE 5連取（9-10）</td></tr>
+<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R20-23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">VIT 3勝・GE 1勝<br /><span class="unknown-note">ブロック内順序未確認（最終R23はVIT勝ちで確定）</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">13-10 決着で確定</td></tr>
+
+<tr class="match-divider"><td colspan="6">2026-10-08 ― vs Nongshim RedForce（VITピック）<span class="md-score num">4 ― 13 負け</span></td></tr>
+<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R1-12</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">NS 8勝・VIT 4勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認（R1はピストル）</td><td class="basis">ハーフ 4-8 で確定</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半全敗</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗</td></tr>
+<tr data-side="atk" data-winner="opp"><td class="r num">R17</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner opp">Nongshim</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半全敗（13-4 決着）</td></tr>
+
+<tr class="match-divider"><td colspan="6">2026-10-10 ― vs G2 Esports（G2ピック）<span class="md-score num">13 ― 11 勝ち</span></td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R1</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">開始4連取</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R2</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R3</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
+<tr data-side="atk" data-winner="vit"><td class="r num">R4</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">開始4連取</td></tr>
+<tr class="block-row" data-side="atk" data-winner="block"><td class="r num">R5-12</td><td><span class="side-pill side-atk">攻撃</span></td><td class="winner block">VIT 5勝・G2 3勝<br /><span class="unknown-note">ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">ハーフ 9-3 で確定</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R13</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td>ピストル <span class="unknown-note">※種別のみ</span></td><td class="basis">後半開始4連敗</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R14</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R15</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
+<tr data-side="def" data-winner="opp"><td class="r num">R16</td><td><span class="side-pill side-def">防衛</span></td><td class="winner opp">G2</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">後半開始4連敗</td></tr>
+<tr class="block-row" data-side="def" data-winner="block"><td class="r num">R17-22</td><td><span class="side-pill side-def">防衛</span></td><td class="winner block">VIT 2勝・G2 4勝<br /><span class="unknown-note">うち終盤にG2の3連取を含む。ブロック内順序未確認</span></td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">11-11 到達で確定</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R23</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認<span class="basis">（ポストプラント状況での決着という映像説明あり）</span></td><td class="unknown">未確認</td><td class="basis">最後の2連取／映像クリップ説明。Derkeの複数キル</td></tr>
+<tr data-side="def" data-winner="vit"><td class="r num">R24</td><td><span class="side-pill side-def">防衛</span></td><td class="winner vit">Vitality</td><td class="unknown">未確認</td><td class="unknown">未確認</td><td class="basis">最後の2連取</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<p style="font-size:12.5px;color:var(--muted)">※経済「ピストル」はハーフ初回であることからの種別のみで、出典で個別に確認したものではありません。各試合の出典は下の「出典一覧」を見てください。</p>
+</section>
+
+<!-- ============ TODO ============ -->
+<section class="chapter" id="todo">
+<h2>VOD確認待ちの項目</h2>
+<p class="lead">以下はテキスト出典だけでは確定できず、推測で埋めていない項目です。プレイブックの完成にはVOD（またはラウンド単位データ）の確認が必要です。</p>
+<div class="panel" data-search>
+<ol class="todo-list">
+<li><strong>ラウンド単位の勝利条件</strong>：殲滅／設置・爆破／解除／時間切れの別（全64ラウンド分）</li>
+<li><strong>ラウンド単位の経済タイプ</strong>：ピストル／エコ／アンチエコ／ボーナス／フォース／フルバイの別（ハーフ初回のピストル以外）</li>
+<li><strong>ブロック内順序未確認ラウンドの個別勝者</strong>：G2戦 R5-12・R17-22、GE戦 R3-12・R20-23、NS戦 R1-12</li>
+<li><strong>序盤（オープニング）配置</strong>：各ラウンドの初期人数配置とファーストコンタクトの位置</li>
+<li><strong>中盤の動き</strong>：ローテーション、情報取り（Sovaドローン／リコン、Yoruテレポート）の使い方</li>
+<li><strong>エクセキューション</strong>：サイト攻めのユーティリティ順序、エントリーの分担（Jett／Yoruどちらが先行するか等）</li>
+<li><strong>ポストプラント配置</strong>：設置後の各選手ポジションと遅延手段</li>
+<li><strong>防衛セットアップ</strong>：センチネル不在をどう補うか（Harborウォール／Astraスターの固定配置、寄せの速さ）</li>
+<li><strong>型タグの付与と集計</strong>：上記が分からないため、攻撃カテゴリ（スモーク／索敵／形／エクセキューション／ポストプラント）と防衛「全体」の型ごとの採用数・勝率はまだ算出できない</li>
+<li><strong>タイムアウト前後の変化</strong>：タイムアウト取得ラウンドと、その前後でのデフォルト／ペースの変化</li>
+<li><strong>VODタイムスタンプリンク</strong>：各ラウンドに付ける秒指定付きリンク</li>
+<li><strong>TactiVal図解</strong>：主要な型の配置図（第2・3章の枠に未登録として残置）</li>
+</ol>
+</div>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<section class="chapter" id="sources">
+<h2>出典一覧</h2>
+<p class="lead">このページの数値と事実は、以下の出典で確認したものだけを使っています。</p>
+<div class="panel" data-search>
+<ul class="src-list">
+<li><span class="what">vs G2 ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/754734/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/754734/</a></li>
+<li><span class="what">vs Global Esports ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/753449/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/753449/</a></li>
+<li><span class="what">vs Global Esports ― Abyssタブ（構成の再確認）</span><a href="https://rib.gg/matches/987" target="_blank" rel="noopener">https://rib.gg/matches/987</a></li>
+<li><span class="what">vs Nongshim ― マップ別スタッツ（構成・キル）</span><a href="https://www.bernielaird.com/vct/match/754731/" target="_blank" rel="noopener">https://www.bernielaird.com/vct/match/754731/</a></li>
+<li><span class="what">vs G2 ― シリーズ集計・ハーフ内訳（Stat Potato）</span><a href="https://www.statpotato.com/match/1685240" target="_blank" rel="noopener">https://www.statpotato.com/match/1685240</a></li>
+<li><span class="what">vs Global Esports ― シリーズ集計・ハーフ内訳（Stat Potato）</span><a href="https://www.statpotato.com/match/1682150" target="_blank" rel="noopener">https://www.statpotato.com/match/1682150</a></li>
+<li><span class="what">vs Global Esports ― 叙述（ピストル・ハーフ経過、talkesport）</span><a href="https://www.talkesport.com/news/valorant/global-esports-vs-vitality-valorant-champions-2026/" target="_blank" rel="noopener">https://www.talkesport.com/news/valorant/global-esports-vs-vitality-valorant-champions-2026/</a></li>
+<li><span class="what">vs G2 ― 叙述（ラウンドの流れ、egamersworld）</span><a href="https://egamersworld.com/valorant/news/37749/team-vitality-beat-g2-esports-to-reach-the-valoran-SJfYzPT1v" target="_blank" rel="noopener">https://egamersworld.com/valorant/news/37749/team-vitality-beat-g2-esports-to-reach-the-valoran-SJfYzPT1v</a></li>
+<li><span class="what">vs G2 ― 叙述（別ソース、ibet）</span><a href="https://ibet.news/e-sports/vitality-sweep-g2-to-reach-valorant-champions-upper-final/" target="_blank" rel="noopener">https://ibet.news/e-sports/vitality-sweep-g2-to-reach-valorant-champions-upper-final/</a></li>
+<li><span class="what">vs Nongshim ― 叙述（ハーフ経過、egamersworld）</span><a href="https://egamersworld.com/valorant/news/37715/team-vitality-beat-nongshim-redforce-to-reach-the--FoUqH_XYE" target="_blank" rel="noopener">https://egamersworld.com/valorant/news/37715/team-vitality-beat-nongshim-redforce-to-reach-the--FoUqH_XYE</a></li>
+<li><span class="what">形式の参考 ― LOUD Summit プレイブック</span><a href="https://ak47bbddk.github.io/loud-summit-playbook/" target="_blank" rel="noopener">https://ak47bbddk.github.io/loud-summit-playbook/</a></li>
+</ul>
+</div>
+</section>
+
+</main>
+</div>
+
+<footer>
+<p>Vitality Abyss プレイブック ― Team Vitality の Abyss（ジェット＋ヨル構成）を、Champions 2026 の3試合・64ラウンド分統合した検証用ドラフトのHTML版です。事実と&#12304;推論&#12305;を分けて記載し、未確認の項目は「未確認／VOD確認待ち」と明記しています。次フェーズは3試合のVODをラウンド単位で確認し、型タグの採用数・勝率とTactiVal図解を埋める作業です。</p>
+</footer>
+
+<script>
+(function(){
+var layout = document.getElementById('layout');
+var tocClose = document.getElementById('tocClose');
+var tocOpen = document.getElementById('tocOpen');
+function setToc(hidden){
+layout.classList.toggle('toc-hidden', hidden);
+tocOpen.hidden =!hidden;
+}
+tocClose.addEventListener('click', function(){ setToc(true);});
+tocOpen.addEventListener('click', function(){ setToc(false);});
+if (window.innerWidth <= 860) { /* mobile: keep TOC visible above content */}
+
+document.getElementById('printBtn').addEventListener('click', function(){
+document.body.classList.add('print-mode');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+document.getElementById('printExit').addEventListener('click', function(){
+document.body.classList.remove('print-mode');
+});
+
+/* ---- round index filters ---- */
+var rows = Array.prototype.slice.call(document.querySelectorAll('#roundTable tbody tr[data-side]'));
+var dividers = Array.prototype.slice.call(document.querySelectorAll('#roundTable tbody tr.match-divider'));
+var fbtns = Array.prototype.slice.call(document.querySelectorAll('.fbtn'));
+var fcount = document.getElementById('filterCount');
+var currentFilter = 'all';
+function applyFilter(){
+var visible = 0;
+rows.forEach(function(r){
+var show = true;
+if (currentFilter === 'atk') show = r.getAttribute('data-side') === 'atk';
+else if (currentFilter === 'def') show = r.getAttribute('data-side') === 'def';
+else if (currentFilter === 'vitwin') show = r.getAttribute('data-winner') === 'vit';
+r.style.display = show? '': 'none';
+if (show) visible++;
+});
+dividers.forEach(function(d){
+var next = d.nextElementSibling, any = false;
+while (next &&!next.classList.contains('match-divider')) {
+if (next.hasAttribute('data-side') && next.style.display!== 'none') { any = true; break;}
+next = next.nextElementSibling;
+}
+d.style.display = any? '': 'none';
+});
+fcount.textContent = '表示中 ' + visible + ' 行（ブロック行を含む）／ 全 ' + rows.length + ' 行';
+}
+fbtns.forEach(function(b){
+b.addEventListener('click', function(){
+fbtns.forEach(function(x){ x.setAttribute('aria-pressed','false');});
+b.setAttribute('aria-pressed','true');
+currentFilter = b.getAttribute('data-filter');
+applyFilter();
+});
+});
+applyFilter();
+
+/* ---- search ---- */
+var input = document.getElementById('searchInput');
+var status = document.getElementById('searchStatus');
+var noHit = document.getElementById('noHit');
+var searchable = Array.prototype.slice.call(document.querySelectorAll('[data-search]'));
+var roundPanelRows = rows.concat(dividers);
+input.addEventListener('input', function(){
+var q = input.value.trim().toLowerCase();
+if (!q) {
+searchable.forEach(function(el){ el.style.display = '';});
+rows.forEach(function(r){ r.style.display = '';});
+dividers.forEach(function(d){ d.style.display = '';});
+status.textContent = '';
+noHit.classList.remove('show');
+applyFilter();
+return;
+}
+var hits = 0;
+searchable.forEach(function(el){
+var hit = el.textContent.toLowerCase().indexOf(q)!== -1;
+el.style.display = hit? '': 'none';
+if (hit) hits++;
+});
+var rowHits = 0;
+rows.forEach(function(r){
+var hit = r.textContent.toLowerCase().indexOf(q)!== -1;
+r.style.display = hit? '': 'none';
+if (hit) rowHits++;
+});
+dividers.forEach(function(d){
+var next = d.nextElementSibling, any = false;
+while (next &&!next.classList.contains('match-divider')) {
+if (next.hasAttribute('data-side') && next.style.display!== 'none') { any = true; break;}
+next = next.nextElementSibling;
+}
+d.style.display = any? '': 'none';
+});
+status.textContent = '「' + input.value.trim() + '」：カード ' + hits + ' 件／ラウンド ' + rowHits + ' 行';
+noHit.classList.toggle('show', hits === 0 && rowHits === 0);
+});
+})();
+</script>
+</body>
+</html>
